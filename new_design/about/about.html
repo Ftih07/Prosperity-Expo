@@ -1,0 +1,792 @@
+<style>
+        .prosperity-expo * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .prosperity-expo {
+            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+            background: white;
+            color: #333;
+            line-height: 1.7;
+            overflow-x: hidden;
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            right: 50%;
+            margin-left: -50vw;
+            margin-right: -50vw;
+            font-weight: 300;
+        }
+
+        .prosperity-expo .hero-section {
+            background: linear-gradient(135deg, #0F1C64 0%, #2940a8 100%);
+            color: white;
+            padding: 120px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prosperity-expo .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            background-size: 50px 50px;
+            animation: prosperity-grid-move 60s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes prosperity-grid-move {
+            0% { background-position: 0 0; }
+            100% { background-position: 50px 50px; }
+        }
+
+        .prosperity-expo .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .prosperity-expo .hero-title {
+            font-size: 4.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            animation: prosperity-fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            opacity: 0;
+        }
+
+        .prosperity-expo .hero-subtitle {
+            font-size: 1.5rem;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: prosperity-fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
+            opacity: 0;
+        }
+
+        .prosperity-expo .hero-date {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 18px 40px;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+            animation: prosperity-fadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
+            opacity: 0;
+        }
+
+        .prosperity-expo .hero-date::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+        }
+
+        .prosperity-expo .hero-date::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 50px;
+            z-index: -1;
+        }
+
+        .prosperity-expo .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+
+        .prosperity-expo .section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 100%;
+        }
+
+        .prosperity-expo .section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prosperity-expo .section-title {
+            font-size: 2.8rem;
+            color: #0F1C64;
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .prosperity-expo .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(15, 28, 100, 0), #0F1C64, rgba(15, 28, 100, 0));
+            border-radius: 1px;
+        }
+
+        .prosperity-expo .background-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .prosperity-expo .background-text {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .prosperity-expo .background-text p {
+            margin-bottom: 25px;
+        }
+
+        .prosperity-expo .background-text strong {
+            font-weight: 400;
+            color: #0F1C64;
+        }
+
+        .prosperity-expo .background-image {
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(15, 28, 100, 0.1);
+            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+        }
+
+        .prosperity-expo .background-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(15, 28, 100, 0.1), rgba(15, 28, 100, 0));
+            z-index: 1;
+        }
+
+        .prosperity-expo .background-image:hover {
+            transform: translateY(-10px) perspective(1000px) rotateX(5deg) rotateY(0deg) rotateZ(0deg) scale(1.02);
+        }
+
+        .prosperity-expo .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+
+        .prosperity-expo .stat-card {
+            background: linear-gradient(135deg, #0F1C64, #2940a8);
+            color: white;
+            padding: 60px 30px;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .prosperity-expo .stat-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+            transform: rotate(30deg);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .prosperity-expo .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .prosperity-expo .stat-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prosperity-expo .stat-number {
+            font-size: 2.8rem;
+            font-weight: 300;
+            margin-bottom: 15px;
+            color: white;
+            position: relative;
+            display: inline-block;
+        }
+
+        .prosperity-expo .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 2px;
+            background: rgba(255,255,255,0.5);
+        }
+
+        .prosperity-expo .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .prosperity-expo .benefits-section {
+            background: #f9fafd;
+            width: 100%;
+            position: relative;
+        }
+
+        .prosperity-expo .benefits-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(15,28,100,0.03)" stroke-width="1"/></svg>');
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .prosperity-expo .benefits-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .prosperity-expo .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .prosperity-expo .benefit-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 5px;
+            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.08);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            border-left: 0;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .prosperity-expo .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, #0F1C64, #2940a8);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .prosperity-expo .benefit-card:hover::before {
+            width: 8px;
+        }
+
+        .prosperity-expo .benefit-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prosperity-expo .benefit-title {
+            color: #0F1C64;
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 25px;
+            letter-spacing: 0.5px;
+        }
+
+        .prosperity-expo .benefit-list {
+            list-style: none;
+        }
+
+        .prosperity-expo .benefit-list li {
+            margin: 15px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .prosperity-expo .benefit-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 2px;
+            background: #0F1C64;
+        }
+
+        .prosperity-expo .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .prosperity-expo .objective-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 5px;
+            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.08);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .prosperity-expo .objective-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #0F1C64, #2940a8);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .prosperity-expo .objective-card:hover::before {
+            height: 8px;
+        }
+
+        .prosperity-expo .objective-card.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prosperity-expo .objective-letter {
+            color: #0F1C64;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        .prosperity-expo .objective-title {
+            color: #0F1C64;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .prosperity-expo .objective-text {
+            color: #555;
+            line-height: 1.9;
+        }
+
+        .prosperity-expo .highlight-section {
+            background: linear-gradient(135deg, #0F1C64 0%, #2940a8 100%);
+            color: white;
+            margin: 100px 0;
+            border-radius: 5px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .prosperity-expo .highlight-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .prosperity-expo .highlight-section.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .prosperity-expo .highlight-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .prosperity-expo .highlight-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .prosperity-expo .highlight-text {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            opacity: 0.9;
+            font-weight: 300;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .prosperity-expo .intro-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 60px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        @keyframes prosperity-fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes prosperity-fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Full width untuk WordPress/Elementor */
+        @media screen and (min-width: 768px) {
+            .prosperity-expo {
+                margin-left: -50vw !important;
+                margin-right: -50vw !important;
+                left: 50% !important;
+                right: 50% !important;
+                width: 100vw !important;
+                max-width: none !important;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .prosperity-expo .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .prosperity-expo .section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .prosperity-expo {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
+            
+            .prosperity-expo .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .prosperity-expo .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .prosperity-expo .background-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .prosperity-expo .section {
+                padding: 60px 0;
+            }
+
+            .prosperity-expo .section-title {
+                font-size: 2.2rem;
+            }
+
+            .prosperity-expo .hero-section {
+                padding: 80px 0;
+                min-height: auto;
+            }
+
+            .prosperity-expo .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prosperity-expo .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .prosperity-expo .objectives-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .prosperity-expo .container {
+                padding: 0 25px;
+            }
+
+            .prosperity-expo .highlight-section {
+                padding: 60px 30px;
+                margin: 60px 0;
+            }
+
+            .prosperity-expo .highlight-title {
+                font-size: 1.8rem;
+            }
+
+            .prosperity-expo .highlight-text {
+                font-size: 1.1rem;
+            }
+        }
+
+        /* Override Elementor container styles */
+        .elementor-widget-html .prosperity-expo {
+            width: 100vw !important;
+            position: relative !important;
+            left: 50% !important;
+            right: 50% !important;
+            margin-left: -50vw !important;
+            margin-right: -50vw !important;
+            max-width: none !important;
+        }
+</style>
+
+<div class="prosperity-expo">
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Indonesia-Australia<br>Prosperity Expo 2025</h1>
+            <p class="hero-subtitle">Strengthening Partnership • Driving Prosperity • Building Future</p>
+            <div class="hero-date">August 6, 2025 • Jakarta, Indonesia</div>
+        </div>
+    </section>
+
+    <!-- Event Background Section -->
+    <section class="section" id="background-section">
+        <div class="container">
+            <h2 class="section-title">Event Background</h2>
+            <div class="background-content">
+                <div class="background-text">
+                    <p><strong>Indonesia-Australia Prosperity Expo 2025</strong> is a visionary initiative aimed at collaborating and strengthening the long-standing partnership between Indonesia and Australia. Rooted in shared history and shared aspirations, the Expo is designed to optimize synergies in cultural diversity, economic growth, and sustainable collaboration.</p>
+                    
+                    <p>The relationship between Indonesia and Australia has developed into a strategic partnership in various fields, including trade, education, and culture. The Expo builds on this foundation by integrating aspects of culture, tourism, trade, and investment to drive mutual growth.</p>
+                    
+                    <p>More than just an event, Prosperity Expo 2025 is a platform to celebrate the close ties between the two countries, showcase shared ambitions, and affirm commitments to a more prosperous future.</p>
+                </div>
+                <div class="background-image">
+                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #0F1C64, #2940a8); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 300; letter-spacing: 1px;">
+                        Strategic Partnership<br>Indonesia - Australia
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card" id="stat1">
+                    <div class="stat-number">US$ 15.39B</div>
+                    <div class="stat-label">Trade Value in 2024</div>
+                </div>
+                <div class="stat-card" id="stat2">
+                    <div class="stat-number">15.3%</div>
+                    <div class="stat-label">Growth in 4 Years</div>
+                </div>
+                <div class="stat-card" id="stat3">
+                    <div class="stat-number">IA-CEPA</div>
+                    <div class="stat-label">Economic Partnership</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section benefits-section" id="benefits-section">
+        <div class="benefits-content">
+            <div class="container">
+                <h2 class="section-title">Promoting Mutual Benefits of IA-CEPA</h2>
+                <p class="intro-text">
+                    The Indonesia-Australia Prosperity Expo 2025 will play a strategic role in addressing misconceptions about the Indonesia-Australia Comprehensive Economic Partnership Agreement (IA-CEPA), highlighting balanced opportunities and mutual benefits.
+                </p>
+                
+                <div class="benefits-grid">
+                    <div class="benefit-card" id="benefit1">
+                        <div class="benefit-title">For Indonesia:</div>
+                        <ul class="benefit-list">
+                            <li>Expanding market access for automotive, textiles, food products, and fisheries</li>
+                            <li>Promoting investment opportunities in manufacturing, energy, and technology</li>
+                            <li>Fostering collaboration in education and skills development</li>
+                        </ul>
+                    </div>
+                    <div class="benefit-card" id="benefit2">
+                        <div class="benefit-title">For Australia:</div>
+                        <ul class="benefit-list">
+                            <li>Strengthening partnerships in agriculture, education, and services</li>
+                            <li>Creating shared value for Indonesian businesses</li>
+                            <li>Encouraging tourism growth as Indonesia remains a top destination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-section" id="highlight-section">
+                    <div class="highlight-content">
+                        <h3 class="highlight-title">Bridging Trade Gaps and Promoting Mutual Growth</h3>
+                        <p class="highlight-text">
+                            The expo will serve as a platform to address trade imbalances by encouraging exports of Indonesian products to Australia, while also promoting foreign direct investment (FDI) and collaborative business ventures. By fostering dialogue, creating B2B connections, and showcasing Indonesia's cultural richness, tourism, and emerging industries, this event will contribute to achieving a balanced and sustainable economic partnership.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Objectives Section -->
+    <section class="section" id="objectives-section">
+        <div class="container">
+            <h2 class="section-title">Event Objectives</h2>
+            <p class="intro-text">
+                The "Indonesia-Australia Prosperity Expo 2025" is a strategic initiative designed to strengthen the ties between Indonesia and Australia through a celebration of cultural diversity and mutual economic growth.
+            </p>
+            
+            <div class="objectives-grid">
+                <div class="objective-card" id="objective1">
+                    <div class="objective-letter">a.</div>
+                    <div class="objective-title">Promoting Cultural Understanding</div>
+                    <div class="objective-text">Showcase the rich cultural heritage of Indonesia and its synergy with Australian values.</div>
+                </div>
+                <div class="objective-card" id="objective2">
+                    <div class="objective-letter">b.</div>
+                    <div class="objective-title">Expanding Economic Collaboration</div>
+                    <div class="objective-text">Highlight trade and investment opportunities to enhance economic relations.</div>
+                </div>
+                <div class="objective-card" id="objective3">
+                    <div class="objective-letter">c.</div>
+                    <div class="objective-title">Strengthening Tourism Initiatives</div>
+                    <div class="objective-text">Attract Australian tourists to explore Indonesia's diverse destinations.</div>
+                </div>
+                <div class="objective-card" id="objective4">
+                    <div class="objective-letter">d.</div>
+                    <div class="objective-title">Fostering Business Connections</div>
+                    <div class="objective-text">Provide a platform for business matching and networking between Indonesian and Australian enterprises.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Function to check if element is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
+            rect.bottom >= 0
+        );
+    }
+
+    // Function to handle scroll animations
+    function handleScrollAnimations() {
+        const sections = document.querySelectorAll('.section');
+        const statCards = document.querySelectorAll('.stat-card');
+        const benefitCards = document.querySelectorAll('.benefit-card');
+        const objectiveCards = document.querySelectorAll('.objective-card');
+        const highlightSection = document.querySelector('.highlight-section');
+
+        sections.forEach(section => {
+            if (isInViewport(section)) {
+                section.classList.add('animated');
+            }
+        });
+
+        statCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.classList.add('animated');
+            }
+        });
+
+        benefitCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.classList.add('animated');
+            }
+        });
+
+        objectiveCards.forEach(card => {
+            if (isInViewport(card)) {
+                card.classList.add('animated');
+            }
+        });
+
+        if (highlightSection && isInViewport(highlightSection)) {
+            highlightSection.classList.add('animated');
+        }
+    }
+
+    // Initial check
+    handleScrollAnimations();
+
+    // Check on scroll
+    window.addEventListener('scroll', function() {
+        handleScrollAnimations();
+    });
+});
+</script>

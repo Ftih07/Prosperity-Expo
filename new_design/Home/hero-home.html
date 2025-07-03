@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indonesia-Australia Prosperity Expo 2025 – Executive Summary</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #1e3a8a;
+        --secondary-blue: #3b82f6;
+        --dark-blue: #1e40af;
+        --light-blue: #dbeafe;
+        --dark-gray: #374151;
+        --light-gray: #f3f4f6;
+        --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #1e40af 0%, #60a5fa 100%);
+        --bg-gradient: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #1e40af 50%,
+          #3b82f6 100%
+        );
+        --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.25);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        overflow-x: hidden;
+      }
+
+      .executive-summary {
+        max-width: 1600px;
+        margin: 2rem auto;
+        padding: 0 2rem;
+        position: relative;
+      }
+
+      /* Floating Elements */
+      .floating-elements {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .floating-orb {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(30, 64, 175, 0.1)
+        );
+        backdrop-filter: blur(10px);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .floating-orb:nth-child(1) {
+        width: 120px;
+        height: 120px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .floating-orb:nth-child(2) {
+        width: 80px;
+        height: 80px;
+        top: 20%;
+        right: 15%;
+        animation-delay: -2s;
+      }
+
+      .floating-orb:nth-child(3) {
+        width: 60px;
+        height: 60px;
+        bottom: 30%;
+        left: 20%;
+        animation-delay: -4s;
+      }
+
+      .floating-orb:nth-child(4) {
+        width: 100px;
+        height: 100px;
+        bottom: 20%;
+        right: 10%;
+        animation-delay: -3s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        33% {
+          transform: translateY(-20px) rotate(120deg);
+        }
+        66% {
+          transform: translateY(10px) rotate(240deg);
+        }
+      }
+
+      /* Geometric Shapes */
+      .geometric-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .shape {
+        position: absolute;
+        opacity: 0.03;
+        animation: rotate 20s linear infinite;
+      }
+
+      .shape-1 {
+        top: 10%;
+        right: 5%;
+        width: 200px;
+        height: 200px;
+        border: 3px solid var(--primary-blue);
+        border-radius: 20px;
+        animation-delay: 0s;
+      }
+
+      .shape-2 {
+        bottom: 15%;
+        left: 5%;
+        width: 0;
+        height: 0;
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 150px solid var(--secondary-blue);
+        animation-delay: -10s;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hero-section {
+        background: var(--bg-gradient);
+        border-radius: 32px;
+        overflow: hidden;
+        position: relative;
+        box-shadow: var(--shadow-strong);
+        margin-bottom: 3rem;
+        z-index: 2;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)" /></svg>');
+        animation: patternMove 30s linear infinite;
+        pointer-events: none;
+      }
+
+      /* Enhanced Particle System */
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: particleFloat 8s ease-in-out infinite;
+      }
+
+      .particle:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .particle:nth-child(2) {
+        left: 20%;
+        animation-delay: -2s;
+      }
+      .particle:nth-child(3) {
+        left: 30%;
+        animation-delay: -4s;
+      }
+      .particle:nth-child(4) {
+        left: 40%;
+        animation-delay: -1s;
+      }
+      .particle:nth-child(5) {
+        left: 50%;
+        animation-delay: -3s;
+      }
+      .particle:nth-child(6) {
+        left: 60%;
+        animation-delay: -5s;
+      }
+      .particle:nth-child(7) {
+        left: 70%;
+        animation-delay: -2.5s;
+      }
+      .particle:nth-child(8) {
+        left: 80%;
+        animation-delay: -4.5s;
+      }
+
+      @keyframes particleFloat {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100px) scale(1);
+          opacity: 0;
+        }
+      }
+
+      @keyframes patternMove {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        100% {
+          transform: translateX(-40px) translateY(-40px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        padding: 4rem;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 4rem;
+        align-items: center;
+        min-height: 600px;
+      }
+
+      .hero-text {
+        color: white;
+      }
+
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        width: fit-content;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .hero-badge:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+        }
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+        letter-spacing: -2px;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #dbeafe 50%,
+          #e0e7ff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: titleGlow 3s ease-in-out infinite;
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+        }
+        50% {
+          filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+        }
+      }
+
+      .hero-description {
+        font-size: 1.3rem;
+        line-height: 1.7;
+        margin-bottom: 3rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .hero-visual {
+        position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+      }
+
+      .leaders-photo {
+        position: relative;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        transform: perspective(1000px) rotateY(-5deg) rotateX(2deg);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: photoFloat 4s ease-in-out infinite;
+      }
+
+      .leaders-photo:hover {
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1.05);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes photoFloat {
+        0%,
+        100% {
+          transform: perspective(1000px) rotateY(-5deg) rotateX(2deg)
+            translateY(0px);
+        }
+        50% {
+          transform: perspective(1000px) rotateY(-5deg) rotateX(2deg)
+            translateY(-10px);
+        }
+      }
+
+      .leaders-photo img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.8s ease;
+      }
+
+      .leaders-photo:hover img {
+        transform: scale(1.1);
+      }
+
+      .photo-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+        padding: 2rem;
+        color: white;
+        transform: translateY(100%);
+        transition: transform 0.6s ease;
+      }
+
+      .leaders-photo:hover .photo-overlay {
+        transform: translateY(0);
+      }
+
+      .photo-caption {
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .flags-display {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .flag {
+        width: 80px;
+        height: 50px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        animation: flagWave 3s ease-in-out infinite;
+      }
+
+      .flag:hover {
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes flagWave {
+        0%,
+        100% {
+          transform: perspective(300px) rotateY(0deg);
+        }
+        50% {
+          transform: perspective(300px) rotateY(10deg);
+        }
+      }
+
+      .flag-indonesia {
+        background: linear-gradient(180deg, #ff0000 50%, #ffffff 50%);
+        animation-delay: 0s;
+      }
+
+      .flag-australia {
+        background: #012169;
+        position: relative;
+        animation-delay: 0.5s;
+      }
+
+      .flag-australia::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 25px;
+        background: linear-gradient(
+            -45deg,
+            #012169 25%,
+            #ffffff 25% 50%,
+            #cf142b 50% 75%,
+            #ffffff 75%
+          ),
+          linear-gradient(
+            45deg,
+            #012169 25%,
+            #ffffff 25% 50%,
+            #cf142b 50% 75%,
+            #ffffff 75%
+          );
+        background-size: 4px 4px;
+      }
+
+      .flag-australia::after {
+        content: "★";
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        color: white;
+        font-size: 0.8rem;
+      }
+
+      .focus-areas {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .focus-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 20px;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .focus-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .focus-card:hover::before {
+        left: 100%;
+      }
+
+      .focus-card:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .focus-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        transition: transform 0.4s ease;
+      }
+
+      .focus-card:hover .focus-icon {
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      .focus-title {
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        line-height: 1.4;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .why-section {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 32px;
+        padding: 4rem;
+        box-shadow: var(--shadow-medium);
+        position: relative;
+        z-index: 2;
+      }
+
+      .why-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent 49%,
+          rgba(59, 130, 246, 0.05) 50%,
+          transparent 51%
+        );
+        border-radius: 32px;
+        pointer-events: none;
+      }
+
+      .why-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .why-header h3 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--dark-blue);
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .why-header h3::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+      }
+
+      .why-subtitle {
+        font-size: 1.2rem;
+        color: var(--dark-gray);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      .why-item {
+        text-align: center;
+        padding: 3rem 2rem;
+        border-radius: 24px;
+        border: 2px solid transparent;
+        position: relative;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+      }
+
+      .why-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--gradient-primary);
+        border-radius: 24px;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+      }
+
+      .why-item:hover::before {
+        opacity: 0.1;
+      }
+
+      .why-item:hover {
+        border-color: var(--secondary-blue);
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(59, 130, 246, 0.2);
+      }
+
+      .why-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 80px;
+        background: var(--gradient-primary);
+        color: white;
+        font-size: 2rem;
+        font-weight: 800;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+        box-shadow: 0 15px 40px rgba(30, 58, 138, 0.4);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .why-number::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.6s ease;
+      }
+
+      .why-item:hover .why-number::before {
+        width: 100px;
+        height: 100px;
+      }
+
+      .why-item:hover .why-number {
+        transform: scale(1.1) rotate(360deg);
+        box-shadow: 0 20px 50px rgba(30, 58, 138, 0.5);
+      }
+
+      .why-text {
+        color: var(--dark-gray);
+        font-size: 1.1rem;
+        line-height: 1.7;
+        font-weight: 500;
+        transition: color 0.4s ease;
+      }
+
+      .why-item:hover .why-text {
+        color: var(--dark-blue);
+      }
+
+      /* Enhanced Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes rotateIn {
+        from {
+          opacity: 0;
+          transform: rotate(-10deg) scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: rotate(0deg) scale(1);
+        }
+      }
+
+      /* Scroll-triggered animation classes */
+      .scroll-reveal {
+        opacity: 0;
+        transition: all 0.8s ease;
+      }
+
+      .scroll-reveal.reveal-active {
+        opacity: 1;
+      }
+
+      .reveal-fade-up {
+        transform: translateY(50px);
+      }
+
+      .reveal-fade-up.reveal-active {
+        transform: translateY(0);
+      }
+
+      .reveal-fade-down {
+        transform: translateY(-50px);
+      }
+
+      .reveal-fade-down.reveal-active {
+        transform: translateY(0);
+      }
+
+      .reveal-slide-left {
+        transform: translateX(-60px);
+      }
+
+      .reveal-slide-left.reveal-active {
+        transform: translateX(0);
+      }
+
+      .reveal-slide-right {
+        transform: translateX(60px);
+      }
+
+      .reveal-slide-right.reveal-active {
+        transform: translateX(0);
+      }
+
+      .reveal-scale {
+        transform: scale(0.8);
+      }
+
+      .reveal-scale.reveal-active {
+        transform: scale(1);
+      }
+
+      .reveal-rotate {
+        transform: rotate(-10deg) scale(0.9);
+      }
+
+      .reveal-rotate.reveal-active {
+        transform: rotate(0deg) scale(1);
+      }
+
+      /* Staggered animations */
+      .stagger-1 {
+        transition-delay: 0.1s;
+      }
+      .stagger-2 {
+        transition-delay: 0.2s;
+      }
+      .stagger-3 {
+        transition-delay: 0.3s;
+      }
+      .stagger-4 {
+        transition-delay: 0.4s;
+      }
+      .stagger-5 {
+        transition-delay: 0.5s;
+      }
+      .stagger-6 {
+        transition-delay: 0.6s;
+      }
+
+      .focus-card {
+        opacity: 0;
+      }
+
+      .focus-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .focus-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .focus-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .focus-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .why-item {
+        opacity: 0;
+      }
+
+      .why-item:nth-child(1) {
+        animation-delay: 0.3s;
+      }
+      .why-item:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      .why-item:nth-child(3) {
+        animation-delay: 0.7s;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+          text-align: center;
+        }
+
+        .hero-visual {
+          max-width: 500px;
+          margin: 0 auto;
+        }
+
+        .floating-orb {
+          display: none;
+        }
+      }
+
+      @media (max-width: 1024px) {
+        .why-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .focus-areas {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .executive-summary {
+          padding: 0 1rem;
+        }
+
+        .hero-content {
+          padding: 3rem 2rem;
+        }
+
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-description {
+          font-size: 1.1rem;
+        }
+
+        .why-section {
+          padding: 3rem 2rem;
+        }
+
+        .why-header h3 {
+          font-size: 2.2rem;
+        }
+
+        .focus-areas {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-content {
+          padding: 2rem 1.5rem;
+        }
+
+        .hero-title {
+          font-size: 2rem;
+        }
+
+        .why-section {
+          padding: 2rem 1.5rem;
+        }
+
+        .leaders-photo img {
+          height: 200px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+    <section class="executive-summary">
+      <!-- Geometric Shapes -->
+      <div class="geometric-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+      </div>
+
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <!-- Particle System -->
+
+        <div class="hero-content">
+          <div class="hero-text">
+            <div class="hero-badge scroll-reveal reveal-fade-down stagger-1">
+              <span class="material-icons">star</span>
+              Executive Summary
+            </div>
+
+            <h1 class="hero-title scroll-reveal reveal-fade-up stagger-2">
+              Indonesia-Australia Prosperity Expo 2025
+            </h1>
+
+            <p class="hero-description scroll-reveal reveal-fade-up stagger-3">
+              Indonesia-Australia Prosperity Expo 2025 isn't just an exhibition
+              — it's a step toward stronger ties through trade, culture,
+              education, and sustainable growth. It reflects our shared
+              commitment to cooperation and long-term partnership between the
+              two nations.
+            </p>
+
+            <!-- Focus Areas -->
+            <div class="focus-areas">
+              <div
+                class="focus-card scroll-reveal reveal-slide-right stagger-1"
+              >
+                <div class="focus-icon">🏛️</div>
+                <div class="focus-title">Promoting Cultural Understanding</div>
+              </div>
+              <div
+                class="focus-card scroll-reveal reveal-slide-right stagger-2"
+              >
+                <div class="focus-icon">📊</div>
+                <div class="focus-title">Expanding Economic Collaboration</div>
+              </div>
+              <div
+                class="focus-card scroll-reveal reveal-slide-right stagger-3"
+              >
+                <div class="focus-icon">✈️</div>
+                <div class="focus-title">Strengthening Tourism Networks</div>
+              </div>
+              <div
+                class="focus-card scroll-reveal reveal-slide-right stagger-4"
+              >
+                <div class="focus-icon">🤝</div>
+                <div class="focus-title">Fostering Business Connections</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="leaders-photo scroll-reveal reveal-scale stagger-4">
+              <img
+                src="https://prosperity-expo.com/wp-content/uploads/2025/05/Screenshot-2025-05-19-191147.png"
+                alt="Indonesia-Australia Leaders Meeting"
+              />
+              <div class="photo-overlay">
+                <div class="photo-caption">Building Stronger Partnerships</div>
+              </div>
+            </div>
+
+            <div
+              class="flags-display scroll-reveal reveal-slide-right stagger-5"
+            >
+              <div class="flag flag-indonesia"></div>
+              <div class="flag flag-australia"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Section -->
+      <div class="why-section">
+        <div class="why-header">
+          <h3>Why</h3>
+          <p class="why-subtitle">
+            Three key objectives driving the Indonesia-Australia Prosperity Expo
+            2025
+          </p>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-item scroll-reveal reveal-fade-up stagger-1">
+            <div class="why-number">1</div>
+            <p class="why-text">
+              Expanding economic collaboration by highlighting trade and
+              investment opportunities across multiple sectors
+            </p>
+          </div>
+          <div class="why-item scroll-reveal reveal-fade-up stagger-2">
+            <div class="why-number">2</div>
+            <p class="why-text">
+              Strengthening tourism initiatives by attracting Australian
+              tourists to explore Indonesia's diverse destinations
+            </p>
+          </div>
+          <div class="why-item scroll-reveal reveal-fade-up stagger-3">
+            <div class="why-number">3</div>
+            <p class="why-text">
+              Emphasizing multi-sector opportunities beyond trade: investment,
+              education, tourism, health & care economy, and technological
+              innovation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Enhanced interactions and animations
+      document.addEventListener("DOMContentLoaded", function () {
+        // Smooth parallax effect for floating elements
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        document.addEventListener("mousemove", function (e) {
+          mouseX = e.clientX / window.innerWidth;
+          mouseY = e.clientY / window.innerHeight;
+        });
+
+        function animateFloatingElements() {
+          currentX += (mouseX - currentX) * 0.05;
+          currentY += (mouseY - currentY) * 0.05;
+
+          const orbs = document.querySelectorAll(".floating-orb");
+          orbs.forEach((orb, index) => {
+            const speed = (index + 1) * 0.5;
+            orb.style.transform = `translate(${currentX * speed * 20}px, ${
+              currentY * speed * 20
+            }px)`;
+          });
+
+          requestAnimationFrame(animateFloatingElements);
+        }
+
+        animateFloatingElements();
+
+        // Enhanced scroll-triggered animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
+
+        // Observe all animated elements
+        document.querySelectorAll(".focus-card, .why-item").forEach((el) => {
+          observer.observe(el);
+        });
+
+        // Enhanced click interactions
+        document.querySelectorAll(".focus-card").forEach((card) => {
+          card.addEventListener("click", function () {
+            this.style.transform = "translateY(-8px) scale(0.95)";
+
+            // Add ripple effect
+            const ripple = document.createElement("div");
+            ripple.style.cssText = `
+                        position: absolute;
+                        border-radius: 50%;
+                        background: rgba(255, 255, 255, 0.3);
+                        transform: scale(0);
+                        animation: ripple 0.6s linear;
+                        pointer-events: none;
+                    `;
+
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = x + "px";
+            ripple.style.top = y + "px";
+
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              this.style.transform = "translateY(-8px) scale(1)";
+              ripple.remove();
+            }, 200);
+          });
+        });
+
+        // Add CSS for ripple animation
+        const style = document.createElement("style");
+        style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
+                    }
+                }
+            `;
+        document.head.appendChild(style);
+
+        // Smooth scrolling enhancement
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+
+        // Add hover sound effect simulation (visual feedback)
+        document
+          .querySelectorAll(".focus-card, .why-item")
+          .forEach((element) => {
+            element.addEventListener("mouseenter", function () {
+              this.style.filter = "brightness(1.1)";
+            });
+
+            element.addEventListener("mouseleave", function () {
+              this.style.filter = "brightness(1)";
+            });
+          });
+
+        // Dynamic background gradient shift
+        let gradientAngle = 135;
+        setInterval(() => {
+          gradientAngle += 0.5;
+          document.documentElement.style.setProperty(
+            "--bg-gradient",
+            `linear-gradient(${gradientAngle}deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%)`
+          );
+        }, 100);
+      });
+
+      // === Scroll Reveal Intersection Observer ===
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("reveal-active");
+            } else {
+              entry.target.classList.remove("reveal-active"); // Fade-out
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        }
+      );
+
+      // Observe all scroll-reveal elements
+      document.querySelectorAll(".scroll-reveal").forEach((el) => {
+        revealObserver.observe(el);
+      });
+    </script>
+  </body>
+</html>

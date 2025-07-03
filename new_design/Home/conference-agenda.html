@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Indonesia-Australia Prosperity Expo 2025 – Conference</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg-gradient: linear-gradient(
+          135deg,
+          var(--primary-blue) 0%,
+          var(--accent-blue) 100%
+        );
+        --primary-blue: #1e3a8a;
+        --secondary-blue: #3b82f6;
+        --accent-blue: #1e40af;
+        --light-blue: #dbeafe;
+        --dark-blue: #0f1419;
+        --light-gray: #f8fafc;
+        --dark-gray: #64748b;
+        --white: #ffffff;
+        --gradient-primary: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3b82f6 50%,
+          #60a5fa 100%
+        );
+        --gradient-accent: linear-gradient(45deg, #0a1f44 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #0f1419 0%, #1e3a8a 100%);
+        --shadow-soft: 0 10px 40px rgba(30, 58, 138, 0.12);
+        --shadow-medium: 0 20px 60px rgba(30, 58, 138, 0.18);
+        --shadow-strong: 0 30px 80px rgba(30, 58, 138, 0.25);
+        --shadow-glow: 0 0 30px rgba(59, 130, 246, 0.3);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, var(--light-gray) 0%, #e2e8f0 100%);
+        color: var(--dark-blue);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      /* Enhanced Main Content */
+      .main-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 8rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 6rem;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .section-header.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-header h2 {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: var(--dark-blue);
+        margin-bottom: 2rem;
+        position: relative;
+        display: inline-block;
+        letter-spacing: -2px;
+      }
+
+      .section-header h2::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 6px;
+        background: var(--gradient-primary);
+        border-radius: 3px;
+      }
+
+      .section-header p {
+        font-size: 1.3rem;
+        color: var(--dark-gray);
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      /* Enhanced Timeline */
+      .timeline {
+        position: relative;
+        padding: 4rem 0;
+      }
+      /*------------------------------------------*/
+      /* Add these to your existing CSS in the <style> section */
+
+      /* Intersection Observer Animation Classes */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .fade-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in-left.animate {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .fade-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .fade-in-right.animate {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* Mobile responsive animations */
+      @media (max-width: 768px) {
+        .fade-in-left,
+        .fade-in-right {
+          transform: translateY(30px);
+        }
+
+        .fade-in-left.animate,
+        .fade-in-right.animate {
+          transform: translateY(0);
+        }
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background: var(--gradient-primary);
+        transform: translateX(-50%);
+        border-radius: 4px;
+        box-shadow: var(--shadow-glow);
+        transform: translateX(-50%) scaleY(0);
+        transform-origin: top;
+        transition: transform 1.2s ease;
+      }
+
+      .timeline.animate::before {
+        transform: translateX(-50%) scaleY(1);
+      }
+
+      /* Hapus atau ganti ini */
+      .timeline-item {
+        animation: fadeInUp 0.8s ease forwards;
+        opacity: 0;
+      }
+
+      .timeline-item.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content {
+        margin-left: 0;
+        margin-right: 55%;
+        text-align: right;
+      }
+
+      .timeline-item:nth-child(even) .timeline-content {
+        margin-left: 55%;
+        margin-right: 0;
+        text-align: left;
+      }
+
+      .timeline-content {
+        background: white;
+        border-radius: 30px;
+        padding: 3.5rem;
+        box-shadow: var(--shadow-soft);
+        position: relative;
+        transition: all 0.6s ease;
+        border: 1px solid rgba(30, 58, 138, 0.1);
+        overflow: hidden;
+      }
+
+      .timeline-content::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: var(--gradient-primary);
+        transform: scaleX(0);
+        transition: transform 0.6s ease;
+        transform-origin: left;
+      }
+
+      .timeline-content:hover::before {
+        transform: scaleX(1);
+      }
+
+      .timeline-content:hover {
+        transform: translateY(-15px);
+        box-shadow: var(--shadow-strong);
+        border-color: var(--secondary-blue);
+      }
+
+      .timeline-dot {
+        position: absolute;
+        left: 50%;
+        top: 3.5rem;
+        transform: translateX(-50%);
+        width: 35px;
+        height: 35px;
+        background: white;
+        border: 6px solid var(--primary-blue);
+        border-radius: 50%;
+        box-shadow: 0 0 0 12px rgba(30, 58, 138, 0.15);
+        z-index: 5;
+        transition: all 0.5s ease;
+      }
+
+      .timeline-item:hover .timeline-dot {
+        background: var(--primary-blue);
+        border-color: white;
+        box-shadow: 0 0 0 20px rgba(30, 58, 138, 0.25);
+        transform: translateX(-50%) scale(1.4);
+      }
+
+      .timeline-time {
+        font-size: 1.3rem;
+        font-weight: 800;
+        background: var(--gradient-primary);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .timeline-time .material-icons {
+        color: var(--primary-blue);
+        font-size: 1.8rem;
+        background: var(--gradient-primary);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .timeline-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--dark-blue);
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+      }
+
+      .timeline-description {
+        color: var(--dark-gray);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+      }
+
+      /* Special Events */
+      .special-event {
+        background: linear-gradient(
+          135deg,
+          rgba(30, 58, 138, 0.1),
+          rgba(59, 130, 246, 0.05)
+        );
+        border: 3px solid var(--secondary-blue);
+      }
+
+      .special-event .timeline-dot {
+        background: var(--secondary-blue);
+        border-color: white;
+        box-shadow: 0 0 0 12px rgba(59, 130, 246, 0.2);
+      }
+
+      .special-event::before {
+        background: var(--gradient-primary) !important;
+      }
+
+      /* Enhanced Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .timeline-item:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .timeline-item:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .timeline-item:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .timeline-item:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .timeline-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .timeline-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .timeline-item:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+      .timeline-item:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+      .timeline-item:nth-child(9) {
+        animation-delay: 0.9s;
+      }
+      .timeline-item:nth-child(10) {
+        animation-delay: 1s;
+      }
+      .timeline-item:nth-child(11) {
+        animation-delay: 1.1s;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 2rem;
+        }
+
+        .timeline-dot {
+          left: 2rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-content {
+          margin-left: 5rem;
+          margin-right: 0;
+          text-align: left;
+        }
+
+        .main-content {
+          padding: 0 1rem 4rem;
+        }
+
+        .section-header h2 {
+          font-size: 2.5rem;
+        }
+
+        .speakers-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline-time {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.5rem;
+        }
+      }
+
+      /* Scroll behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Enhanced focus states for accessibility */
+      .btn-primary:focus,
+      .btn-secondary:focus {
+        outline: 3px solid var(--secondary-blue);
+        outline-offset: 2px;
+      }
+
+      @media (max-width: 768px) {
+        .timeline::before {
+          left: 1.5rem; /* Lebih dekat ke kiri */
+        }
+
+        .timeline-dot {
+          left: 1.5rem; /* Sesuaikan dengan timeline line */
+          width: 25px;
+          height: 25px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-content {
+          margin-left: 4rem; /* Kurangi dari 5rem */
+          margin-right: 1rem;
+          text-align: left;
+        }
+
+        .timeline-content {
+          padding: 2rem 1.5rem; /* Kurangi padding */
+        }
+
+        .timeline-title {
+          font-size: 1.5rem; /* Kurangi dari default */
+          line-height: 1.3;
+        }
+
+        .timeline-time {
+          font-size: 1.1rem;
+          margin-bottom: 1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .main-content {
+          padding: 0 1rem 3rem;
+        }
+
+        .section-header {
+          margin-bottom: 4rem;
+          padding: 0 1rem;
+        }
+
+        .section-header p {
+          font-size: 1.1rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .btn-primary,
+        .btn-secondary {
+          min-height: 48px; /* Minimum touch target */
+        }
+
+        .timeline-content:hover {
+          transform: translateY(-5px); /* Kurangi hover effect */
+        }
+      }
+
+      @media (max-width: 768px) {
+        .timeline-item {
+          margin-bottom: 5rem;
+          animation: none; /* Matikan complex animations */
+          opacity: 1;
+        }
+      }
+
+      /* Partnership Section Styles */
+      .partnership-section {
+        margin: 0 auto;
+        max-width: 1600px;
+        padding: 5rem 2rem;
+        background: var(--bg-gradient);
+        border-radius: 32px;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 1s ease, transform 1s ease;
+      }
+
+      .partnership-section.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .partnership-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+
+        animation: patternMove 25s linear infinite;
+      }
+
+      @keyframes patternMove {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        100% {
+          transform: translateX(-40px) translateY(-40px);
+        }
+      }
+
+      .partnership-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .partnership-header h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1rem;
+        letter-spacing: -1px;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .partnership-header p {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.85);
+        max-width: 600px;
+        margin: 0 auto;
+        font-weight: 400;
+      }
+
+      .partnership-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      .partnership-column {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 24px;
+        padding: 3rem;
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+      }
+
+      .partnership-column.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .partnership-column:hover {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.25);
+        transform: translateY(-8px);
+      }
+
+      .column-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 2.5rem;
+        text-align: center;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .column-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--light-blue),
+          white,
+          var(--light-blue)
+        );
+        border-radius: 2px;
+      }
+
+      .partners-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Dua kolom per kategori */
+        gap: 2rem;
+      }
+
+      .partner-card {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+      }
+
+      .partner-card.animate {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .partner-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.08),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .partner-card:hover::before {
+        left: 100%;
+      }
+
+      .partner-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .partner-logo-wrapper {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 1.5rem;
+        background: white;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 2;
+      }
+
+      .partner-card:hover .partner-logo-wrapper {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+      }
+
+      .partner-logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      .partner-info h3 {
+        color: white;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        letter-spacing: -0.3px;
+      }
+
+      .partner-info p {
+        color: rgba(255, 255, 255, 0.75);
+        font-size: 0.95rem;
+        font-weight: 400;
+        line-height: 1.4;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1024px) {
+        .partnership-grid {
+          gap: 3rem;
+        }
+
+        .partnership-column {
+          padding: 2.5rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .partnership-section {
+          padding: 4rem 1.5rem;
+          border-radius: 24px;
+        }
+
+        .partnership-header h2 {
+          font-size: 2.5rem;
+        }
+
+        .partnership-grid {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .partnership-column {
+          padding: 2rem;
+        }
+
+        .column-title {
+          font-size: 1.3rem;
+          margin-bottom: 2rem;
+        }
+
+        .partners-list {
+          gap: 1.5rem;
+          grid-template-columns: 1fr; /* jadi 1 kolom saja saat mobile */
+        }
+
+        .partner-card {
+          padding: 1.5rem;
+        }
+
+        .partner-logo-wrapper {
+          width: 80px;
+          height: 80px;
+          margin-bottom: 1.2rem;
+        }
+
+        .partner-logo {
+          width: 50px;
+          height: 50px;
+        }
+
+        .partner-info h3 {
+          font-size: 1.2rem;
+        }
+
+        .partner-info p {
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .partnership-section {
+          padding: 3rem 1rem;
+          margin: 0 1rem;
+        }
+
+        .partnership-header h2 {
+          font-size: 2rem;
+        }
+
+        .partnership-header p {
+          font-size: 1.1rem;
+        }
+
+        .partnership-column {
+          padding: 1.5rem;
+        }
+
+        .partner-card {
+          padding: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Conference Agenda -->
+      <section id="agenda" class="section-header">
+        <h2>Conference Agenda</h2>
+        <p>
+          A comprehensive program featuring industry leaders, government
+          officials, and experts from both countries, designed to foster
+          meaningful bilateral partnerships and drive economic growth.
+        </p>
+      </section>
+
+      <div class="timeline">
+        <!-- Registration -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">how_to_reg</span>
+              09:30 - 10:00
+            </div>
+            <h3 class="timeline-title">Registration & Welcome Coffee</h3>
+            <p class="timeline-description">
+              Start your day by connecting with fellow attendees in a relaxed
+              networking atmosphere. Enjoy premium Indonesian coffee while
+              registering and receiving your conference materials.
+            </p>
+          </div>
+        </div>
+
+        <!-- Opening Ceremony -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">celebration</span>
+              10:00 - 10:25
+            </div>
+            <h3 class="timeline-title">Opening Ceremony</h3>
+            <p class="timeline-description">
+              Official opening of the Indonesia-Australia Prosperity Expo 2025
+              Conference with distinguished speakers from both nations.
+            </p>
+          </div>
+        </div>
+
+        <!-- Remarks -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">record_voice_over</span>
+              10:25 - 10:35
+            </div>
+            <h3 class="timeline-title">Welcome Remarks</h3>
+            <p class="timeline-description">
+              Opening remarks setting the stage for bilateral cooperation and
+              economic partnership between Indonesia and Australia.
+            </p>
+          </div>
+        </div>
+
+        <!-- Keynote -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">mic</span>
+              10:35 - 10:45
+            </div>
+            <h3 class="timeline-title">Keynote Address</h3>
+            <p class="timeline-description">
+              Strategic insights into Indonesia-Australia trade relations and
+              the future of bilateral economic cooperation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Fireside Chats -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content special-event">
+            <div class="timeline-time">
+              <span class="material-icons">chat_bubble</span>
+              10:45 - 12:30
+            </div>
+            <h3 class="timeline-title">
+              Fireside Chats - Multi-Sector Discussions
+            </h3>
+            <p class="timeline-description">
+              Interactive discussions across key sectors driving
+              Indonesia-Australia economic partnership, featuring industry
+              leaders and experts from both nations.
+            </p>
+          </div>
+        </div>
+
+        <!-- Networking Lunch -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content special-event">
+            <div class="timeline-time">
+              <span class="material-icons">restaurant</span>
+              12:30 - 14:00
+            </div>
+            <h3 class="timeline-title">Networking Lunch</h3>
+            <p class="timeline-description">
+              <strong>Cultural Performance by Gamelan Dananda</strong><br />
+              Enjoy authentic Indonesian cuisine while networking with delegates
+              and experiencing traditional Indonesian music performances in an
+              elegant setting.
+            </p>
+          </div>
+        </div>
+
+        <!-- Trade Attache Presentation -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">insights</span>
+              14:00 - 14:10
+            </div>
+            <h3 class="timeline-title">Trade Opportunities Presentation</h3>
+            <p class="timeline-description">
+              <strong>Indonesian Trade Attache, Canberra</strong><br />
+              Comprehensive overview of the Indonesia-Australia Prosperity Expo
+              2025 and emerging bilateral trade opportunities across various
+              sectors.
+            </p>
+          </div>
+        </div>
+
+        <!-- Talk Show -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content special-event">
+            <div class="timeline-time">
+              <span class="material-icons">forum</span>
+              14:10 - 15:20
+            </div>
+            <h3 class="timeline-title">
+              Talk Show: IA-CEPA & Bilateral Trade Trends
+            </h3>
+            <p class="timeline-description">
+              <strong>Topic:</strong> Understanding the tides of change and
+              exploring opportunities for the future<br />
+              <strong>Moderator:</strong> Moekti P. Soejachmoen, Lead Adviser
+              for Market Access, Katalis
+            </p>
+          </div>
+        </div>
+
+        <!-- Break -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">coffee</span>
+              15:20 - 15:30
+            </div>
+            <h3 class="timeline-title">Coffee Break</h3>
+            <p class="timeline-description">
+              Refreshments and networking opportunity with premium Indonesian
+              coffee and light refreshments.
+            </p>
+          </div>
+        </div>
+
+        <!-- Afternoon Talk Show -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">groups</span>
+              15:30 - 16:30
+            </div>
+            <h3 class="timeline-title">Afternoon Session</h3>
+            <p class="timeline-description">
+              Additional discussions focusing on implementation strategies and
+              next steps for bilateral cooperation. Interactive Q&A sessions and
+              networking opportunities with industry leaders.
+            </p>
+          </div>
+        </div>
+
+        <!-- Closing -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">
+              <span class="material-icons">flag</span>
+              16:30
+            </div>
+            <h3 class="timeline-title">Closing Ceremony</h3>
+            <p class="timeline-description">
+              Concluding remarks highlighting key outcomes and next steps for
+              Indonesia-Australia cooperation. Summary of action items and
+              future collaboration opportunities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Partnership Section -->
+    <section class="partnership-section">
+      <div class="partnership-header">
+        <h2>Our Strategic Partners</h2>
+        <p>
+          Strengthening bilateral cooperation through strategic alliances and
+          collaborative initiatives
+        </p>
+      </div>
+
+      <div class="partnership-grid">
+        <!-- In Collaboration With Column -->
+        <div class="partnership-column">
+          <h3 class="column-title">In Collaboration With</h3>
+          <div class="partners-list">
+            <div class="partner-card">
+              <div class="partner-logo-wrapper">
+                <img
+                  src="https://framerusercontent.com/images/fGCgpHRiychMw8xfk26Tri4H0w.png"
+                  alt="Katalis"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-info">
+                <h3>Katalis</h3>
+                <p>Australia-Indonesia Centre</p>
+              </div>
+            </div>
+
+            <div class="partner-card">
+              <div class="partner-logo-wrapper">
+                <img
+                  src="https://cdn-az.allevents.in/events4/banners/7c40abc0bbe380f162da8a9afd2fb72e2ae150b0610da261abfaab51667528be-rimg-w400-h400-gmir.png?v=1681264687"
+                  alt="KBRI Canberra"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-info">
+                <h3>KBRI Canberra</h3>
+                <p>Embassy of the Republic of Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Organized By Column -->
+        <div class="partnership-column">
+          <h3 class="column-title">Organized By</h3>
+          <div class="partners-list">
+            <div class="partner-card">
+              <div class="partner-logo-wrapper">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbFGx1TT8dCja5p4ACKjHO6e0d8vTOOTO6Qw&s"
+                  alt="Deka Event"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-info">
+                <h3>Deka Event</h3>
+                <p>Indonesian Trade Office</p>
+              </div>
+            </div>
+
+            <div class="partner-card">
+              <div class="partner-logo-wrapper">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuspemEwhg7n2xDVMQuWfzWmybKNVsYhIt2w&s"
+                  alt="Kupu GSC"
+                  class="partner-logo"
+                />
+              </div>
+              <div class="partner-info">
+                <h3>Kupu GSC</h3>
+                <p>Indonesian Trade Office</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+          } else {
+            entry.target.classList.remove("animate"); // Optional: fade-out on scroll out
+          }
+        });
+      }, observerOptions);
+
+      // Enhanced timeline animation with staggered effect
+      const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate"); // <-- Ini penting agar timeline muncul
+            const timelineItems =
+              entry.target.querySelectorAll(".timeline-item");
+            timelineItems.forEach((item, index) => {
+              setTimeout(() => {
+                item.classList.add("animate");
+              }, index * 150);
+            });
+          } else {
+            entry.target.classList.remove("animate"); // Optional
+            const timelineItems =
+              entry.target.querySelectorAll(".timeline-item");
+            timelineItems.forEach((item) => item.classList.remove("animate"));
+          }
+        });
+      }, observerOptions);
+
+      // Partnership cards staggered animation
+      const partnershipObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const cards = entry.target.querySelectorAll(".partner-card");
+            cards.forEach((card, index) => {
+              setTimeout(() => {
+                card.classList.add("animate");
+              }, index * 200);
+            });
+          } else {
+            const cards = entry.target.querySelectorAll(".partner-card");
+            cards.forEach((card) => card.classList.remove("animate"));
+          }
+        });
+      }, observerOptions);
+
+      // Initialize animations when DOM is loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        const sectionHeader = document.querySelector(".section-header");
+        const timeline = document.querySelector(".timeline");
+        const partnershipSection = document.querySelector(
+          ".partnership-section"
+        );
+        const partnershipColumns = document.querySelectorAll(
+          ".partnership-column"
+        );
+
+        // Add initial animation classes
+        if (sectionHeader) sectionHeader.classList.add("fade-in");
+        if (timeline) timeline.classList.add("fade-in");
+        if (partnershipSection) partnershipSection.classList.add("fade-in");
+        partnershipColumns.forEach((column, index) => {
+          column.classList.add(
+            index % 2 === 0 ? "fade-in-left" : "fade-in-right"
+          );
+        });
+
+        // Observe sections
+        if (sectionHeader) observer.observe(sectionHeader);
+        if (partnershipSection) observer.observe(partnershipSection);
+        partnershipColumns.forEach((column) => observer.observe(column));
+        if (timeline) timelineObserver.observe(timeline);
+        if (partnershipSection) partnershipObserver.observe(partnershipSection);
+
+        // Scroll progress bar
+        const scrollProgress = document.createElement("div");
+        scrollProgress.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            z-index: 9999;
+            transition: width 0.3s ease;
+          `;
+        document.body.appendChild(scrollProgress);
+
+        window.addEventListener("scroll", () => {
+          const scrollTop = window.pageYOffset;
+          const docHeight = document.body.scrollHeight - window.innerHeight;
+          const scrollPercent = (scrollTop / docHeight) * 100;
+          scrollProgress.style.width = scrollPercent + "%";
+        });
+      });
+    </script>
+  </body>
+</html>
