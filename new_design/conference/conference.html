@@ -54,6 +54,91 @@
         line-height: 1.6;
       }
 
+      /* === SCROLL ANIMATIONS === */
+
+      /* Add these new classes to your existing CSS */
+
+      /* Scroll Animation Base Classes */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .scroll-animate.animate-fade-in {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .scroll-animate-left {
+        opacity: 0;
+        transform: translateX(-60px);
+        transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .scroll-animate-left.animate-fade-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scroll-animate-right {
+        opacity: 0;
+        transform: translateX(60px);
+        transition: all 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .scroll-animate-right.animate-fade-in {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .scroll-animate-scale {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .scroll-animate-scale.animate-fade-in {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .scroll-animate-rotate {
+        opacity: 0;
+        transform: rotate(-10deg) translateY(30px);
+        transition: all 1.1s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: opacity, transform;
+      }
+
+      .scroll-animate-rotate.animate-fade-in {
+        opacity: 1;
+        transform: rotate(0deg) translateY(0);
+      }
+
+      /* Staggered Animation Delays */
+      .scroll-animate:nth-child(1) {
+        transition-delay: 0s;
+      }
+      .scroll-animate:nth-child(2) {
+        transition-delay: 0.1s;
+      }
+      .scroll-animate:nth-child(3) {
+        transition-delay: 0.2s;
+      }
+      .scroll-animate:nth-child(4) {
+        transition-delay: 0.3s;
+      }
+      .scroll-animate:nth-child(5) {
+        transition-delay: 0.4s;
+      }
+      .scroll-animate:nth-child(6) {
+        transition-delay: 0.5s;
+      }
+
       /* Floating Particles Background */
       .particles {
         position: absolute;
@@ -547,6 +632,7 @@
         z-index: 4;
       }
 
+      /* Update existing classes to use scroll animations */
       .info-card {
         background: white;
         border-radius: 30px;
@@ -556,6 +642,14 @@
         position: relative;
         transition: all 0.6s ease;
         overflow: hidden;
+        /* Add scroll animation */
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      .info-card.animate-fade-in {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .info-card::before {
@@ -621,9 +715,18 @@
         padding: 0 2rem 8rem;
       }
 
+      /* Update section headers */
       .section-header {
         text-align: center;
         margin-bottom: 6rem;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .section-header.animate-fade-in {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .section-header h2 {
@@ -675,12 +778,12 @@
         box-shadow: var(--shadow-glow);
       }
 
+      /* Remove the existing timeline-item animation and replace with scroll-based */
       .timeline-item {
         position: relative;
         margin-bottom: 6rem;
         width: 100%;
-        animation: fadeInUp 0.8s ease forwards;
-        opacity: 0;
+        /* Remove the existing animation and opacity: 0 */
       }
 
       .timeline-item:nth-child(odd) .timeline-content {
@@ -729,11 +832,12 @@
         border-color: var(--secondary-blue);
       }
 
+      /* Special animation for timeline dots */
       .timeline-dot {
         position: absolute;
         left: 50%;
         top: 3.5rem;
-        transform: translateX(-50%);
+        transform: translateX(-50%) scale(0);
         width: 35px;
         height: 35px;
         background: white;
@@ -741,7 +845,83 @@
         border-radius: 50%;
         box-shadow: 0 0 0 12px rgba(30, 58, 138, 0.15);
         z-index: 5;
-        transition: all 0.5s ease;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .timeline-dot.animate-fade-in {
+        transform: translateX(-50%) scale(1);
+      }
+
+      /* Progressive Enhancement - Advanced Animations */
+      @media (prefers-reduced-motion: no-preference) {
+        /* Parallax-like effect for timeline */
+        .timeline-content {
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .timeline-content.animate-fade-in {
+          transform: translateY(0);
+        }
+
+        /* Elegant fade for speaker cards */
+        .speaker-card {
+          opacity: 0;
+          transform: translateY(30px) scale(0.95);
+          transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .speaker-card.animate-fade-in {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+
+        /* Sophisticated section divider animation */
+        .section-header h2::after {
+          transform: translateX(-50%) scaleX(0);
+          transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+        }
+
+        .section-header.animate-fade-in h2::after {
+          transform: translateX(-50%) scaleX(1);
+        }
+      }
+
+      /* Reduced motion for accessibility */
+      @media (prefers-reduced-motion: reduce) {
+        .scroll-animate,
+        .scroll-animate-left,
+        .scroll-animate-right,
+        .scroll-animate-scale,
+        .scroll-animate-rotate,
+        .info-card,
+        .section-header,
+        .timeline-dot,
+        .speaker-card {
+          transition: opacity 0.3s ease;
+          transform: none !important;
+        }
+      }
+
+      /* Mobile optimizations */
+      @media (max-width: 768px) {
+        .scroll-animate,
+        .scroll-animate-left,
+        .scroll-animate-right {
+          transform: translateY(30px);
+        }
+
+        .scroll-animate-left,
+        .scroll-animate-right {
+          transform: translateY(30px); /* Unified movement for mobile */
+        }
+
+        .scroll-animate-scale {
+          transform: scale(0.9);
+        }
+
+        .scroll-animate-rotate {
+          transform: rotate(-5deg) translateY(20px);
+        }
       }
 
       .timeline-item:hover .timeline-dot {
@@ -1674,7 +1854,7 @@
 
     <!-- Event Info Cards -->
     <div class="event-info">
-      <div class="info-card">
+      <div class="info-card scroll-animate-scale">
         <div class="icon">
           <div class="material-icons">event</div>
         </div>
@@ -1685,7 +1865,7 @@
           >
         </p>
       </div>
-      <div class="info-card">
+      <div class="info-card scroll-animate-scale">
         <div class="icon">
           <div class="material-icons">location_on</div>
         </div>
@@ -1695,7 +1875,7 @@
           Kuningan<br /><em>Premium conference facility</em>
         </p>
       </div>
-      <div class="info-card">
+      <div class="info-card scroll-animate-scale">
         <div class="icon">
           <div class="material-icons">groups</div>
         </div>
@@ -1710,7 +1890,7 @@
     <!-- Main Content -->
     <div class="main-content">
       <!-- Conference Agenda -->
-      <section id="agenda" class="section-header">
+      <section id="agenda" class="section-header scroll-animate">
         <h2>Conference Agenda</h2>
         <p>
           A comprehensive program featuring industry leaders, government
@@ -1721,7 +1901,7 @@
 
       <div class="timeline">
         <!-- Registration -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -1738,7 +1918,7 @@
         </div>
 
         <!-- Opening Ceremony -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -1751,7 +1931,7 @@
               Conference with distinguished speakers from both nations.
             </p>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/paul-bartlett-3a0a5545/?originalSubdomain=id"
                   target="_blank"
@@ -1767,7 +1947,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://en-m-wikipedia-org.translate.goog/wiki/Siswo_Pramono?_x_tr_sl=en&_x_tr_tl=id&_x_tr_hl=id&_x_tr_pto=wa"
                   target="_blank"
@@ -1785,7 +1965,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://indonesia.embassy.gov.au/jaktindonesian/HOM.html"
                   target="_blank"
@@ -1808,7 +1988,7 @@
         </div>
 
         <!-- Remarks -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -1821,7 +2001,7 @@
               economic partnership between Indonesia and Australia.
             </p>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/ekachandrabuana/?originalSubdomain=id"
                   target="_blank"
@@ -1845,7 +2025,7 @@
         </div>
 
         <!-- Keynote -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -1858,7 +2038,7 @@
               the future of bilateral economic cooperation.
             </p>
             <div class="speakers-grid">
-              <div class="speaker-card keynote-speaker">
+              <div class="speaker-card keynote-speaker scroll-animate">
                 <a
                   href="https://id.wikipedia.org/wiki/Budi_Santoso_(birokrat)"
                   target="_blank"
@@ -1881,7 +2061,7 @@
         </div>
 
         <!-- Fireside Chats -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content special-event">
             <div class="timeline-time">
@@ -1898,9 +2078,11 @@
             </p>
 
             <!-- Health & Care Economy -->
-            <div class="session-category">Health & Care Economy</div>
+            <div class="session-category scroll-animate-rotate">
+              Health & Care Economy
+            </div>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/dr-andrew-rochford-63238231/?originalSubdomain=au"
                   target="_blank"
@@ -1918,7 +2100,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/benjamin-cass-84387031/?originalSubdomain=id"
                   target="_blank"
@@ -1936,7 +2118,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/karliecummins/?originalSubdomain=id"
                   target="_blank"
@@ -1952,7 +2134,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/kevin-evans-1297aba/?originalSubdomain=id"
                   target="_blank"
@@ -1973,11 +2155,14 @@
             </div>
 
             <!-- Education/Vocational Training -->
-            <div class="session-category" style="margin-top: 2rem">
+            <div
+              class="session-category scroll-animate-rotate"
+              style="margin-top: 2rem"
+            >
               Education & Vocational Training
             </div>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a href="https://www.linkedin.com/in/imeldamh/" target="_blank">
                   <div class="speaker-content">
                     <img
@@ -1992,7 +2177,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/mariamkartikatresni/"
                   target="_blank"
@@ -2008,7 +2193,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://rocketreach.co/chris-evans-email_29424338"
                   target="_blank"
@@ -2026,7 +2211,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/timothy-gilbert-57b4a731/?originalSubdomain=au"
                   target="_blank"
@@ -2047,11 +2232,14 @@
             </div>
 
             <!-- Technology -->
-            <div class="session-category" style="margin-top: 2rem">
+            <div
+              class="session-category scroll-animate-rotate"
+              style="margin-top: 2rem"
+            >
               Technology & Innovation
             </div>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/marshallpribadi/?originalSubdomain=id"
                   target="_blank"
@@ -2067,7 +2255,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/stuart-parry-433b15117/?originalSubdomain=au"
                   target="_blank"
@@ -2083,7 +2271,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/joelcychang/?originalSubdomain=id"
                   target="_blank"
@@ -2102,7 +2290,10 @@
             </div>
 
             <!-- Agriculture -->
-            <div class="session-category" style="margin-top: 2rem">
+            <div
+              class="session-category scroll-animate-rotate"
+              style="margin-top: 2rem"
+            >
               Agriculture & Food Security
             </div>
             <p class="timeline-description" style="margin-bottom: 1.5rem">
@@ -2110,7 +2301,7 @@
               Adviser, Katalis
             </p>
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://id.wikipedia.org/wiki/Franciscus_Welirang"
                   target="_blank"
@@ -2128,7 +2319,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/tissa-aunilla-1353353b/?originalSubdomain=id"
                   target="_blank"
@@ -2144,7 +2335,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://grainsaustralia.com.au/news/2022/08/richard-simonaitis-appointed-ceo-of-grains-australia"
                   target="_blank"
@@ -2165,7 +2356,7 @@
         </div>
 
         <!-- Networking Lunch -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content special-event">
             <div class="timeline-time">
@@ -2183,7 +2374,7 @@
         </div>
 
         <!-- Trade Attache Presentation -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -2198,7 +2389,7 @@
               sectors.
             </p>
             <div class="speakers-grid">
-              <div class="speaker-card keynote-speaker">
+              <div class="speaker-card keynote-speaker scroll-animate">
                 <a href="https://haris.com.au/" target="_blank">
                   <div class="speaker-content">
                     <img
@@ -2218,7 +2409,7 @@
         </div>
 
         <!-- Talk Show -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content special-event">
             <div class="timeline-time">
@@ -2236,7 +2427,7 @@
             </p>
 
             <div class="speakers-grid">
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://id.wikipedia.org/wiki/Dyah_Roro_Esti_Widya_Putri"
                   target="_blank"
@@ -2254,7 +2445,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/gita-kamath-59851b7b/?originalSubdomain=id"
                   target="_blank"
@@ -2272,7 +2463,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://crawford.anu.edu.au/people/arianto-patunru"
                   target="_blank"
@@ -2290,7 +2481,7 @@
                   </div>
                 </a>
               </div>
-              <div class="speaker-card speaker-card-with-photo">
+              <div class="speaker-card speaker-card-with-photo scroll-animate">
                 <a
                   href="https://www.linkedin.com/in/paul-bartlett-3a0a5545/?originalSubdomain=id"
                   target="_blank"
@@ -2311,7 +2502,7 @@
         </div>
 
         <!-- Break -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -2327,7 +2518,7 @@
         </div>
 
         <!-- Afternoon Talk Show -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -2344,7 +2535,7 @@
         </div>
 
         <!-- Closing -->
-        <div class="timeline-item">
+        <div class="timeline-item scroll-animate-left">
           <div class="timeline-dot"></div>
           <div class="timeline-content">
             <div class="timeline-time">
@@ -2381,5 +2572,151 @@
         });
       });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        root: null,
+        rootMargin: "0px 0px -100px 0px", // Trigger animation 100px before element is fully visible
+        threshold: 0.1,
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Add animation class with a slight delay for elegance
+            setTimeout(() => {
+              entry.target.classList.add("animate-fade-in");
+            }, 100);
+
+            // Unobserve once animated to improve performance
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      // Select elements to animate
+      const animatedElements = document.querySelectorAll(`
+    .info-card,
+    .section-header,
+    .timeline-item,
+    .timeline-dot,
+    .speaker-card,
+    .session-category
+  `);
+
+      // Add scroll animation classes and observe elements
+      animatedElements.forEach((element, index) => {
+        // Add appropriate animation class based on element type
+        if (element.classList.contains("info-card")) {
+          element.classList.add("scroll-animate-scale");
+        } else if (element.classList.contains("timeline-item")) {
+          if (index % 2 === 0) {
+            element.classList.add("scroll-animate-left");
+          } else {
+            element.classList.add("scroll-animate-right");
+          }
+        } else if (element.classList.contains("speaker-card")) {
+          element.classList.add("scroll-animate");
+        } else if (element.classList.contains("session-category")) {
+          element.classList.add("scroll-animate-rotate");
+        } else {
+          element.classList.add("scroll-animate");
+        }
+
+        observer.observe(element);
+      });
+
+      // Special handling for timeline dots
+      const timelineDots = document.querySelectorAll(".timeline-dot");
+      timelineDots.forEach((dot) => {
+        observer.observe(dot);
+      });
+
+      // Progressive enhancement for modern browsers
+      if ("IntersectionObserver" in window) {
+        // Enhanced animations for better performance
+        const advancedObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                // Add elegant staggered animation for multiple elements
+                const siblingElements =
+                  entry.target.parentElement.querySelectorAll(
+                    ".scroll-animate"
+                  );
+                siblingElements.forEach((sibling, index) => {
+                  setTimeout(() => {
+                    sibling.classList.add("animate-fade-in");
+                  }, index * 150); // Stagger by 150ms
+                });
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px 0px -50px 0px",
+            threshold: 0.2,
+          }
+        );
+
+        // Observe parent containers for staggered animations
+        const staggeredContainers = document.querySelectorAll(
+          ".speakers-grid, .event-info"
+        );
+        staggeredContainers.forEach((container) => {
+          advancedObserver.observe(container);
+        });
+      }
+
+      // Smooth reveal for hero section elements (if not already visible)
+      const heroElements = document.querySelectorAll(
+        ".hero-badge, .hero h1, .hero .subtitle, .hero .description, .hero-buttons"
+      );
+      heroElements.forEach((element, index) => {
+        element.style.opacity = "0";
+        element.style.transform = "translateY(30px)";
+        element.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
+
+        setTimeout(() => {
+          element.style.opacity = "1";
+          element.style.transform = "translateY(0)";
+        }, 300 + index * 200); // Stagger hero elements
+      });
+
+      // Enhanced performance: Remove animations on scroll end
+      let scrollTimer;
+      window.addEventListener("scroll", () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          // Optional: Add any cleanup or optimization here
+        }, 150);
+      });
+    });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target;
+          if (entry.isIntersecting) {
+            el.classList.add("animate-fade-in");
+          } else {
+            el.classList.remove("animate-fade-in"); // Ini penting supaya bisa re-animate
+          }
+        });
+      },
+      {
+        threshold: 0.15, // bisa disesuaikan (berapa banyak elemen harus kelihatan baru dianggap "masuk viewport")
+      }
+    );
+
+    // Semua elemen yang ingin di-observe (bisa ditambah sesuai kebutuhan)
+    document
+      .querySelectorAll(
+        ".scroll-animate, .scroll-animate-left, .scroll-animate-right, .scroll-animate-scale, .scroll-animate-rotate, .timeline-dot, .speaker-card"
+      )
+      .forEach((el) => {
+        observer.observe(el);
+      });
   </script>
 </html>
