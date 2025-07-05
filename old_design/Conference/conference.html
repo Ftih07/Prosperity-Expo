@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Indonesia-Australia Prosperity Expo 2025 – Conference Agenda</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    :root {
+      --color-blue-primary: #0F1C64;
+      --color-red-accent: #B9001E;
+      --color-red-accent-hover: #d1272d;
+      --color-gray-light: #f9fafb;
+      --color-gray-muted: #6b7280;
+      --color-gray-lighter: #f3f4f6;
+    }
+
+    /* Base styling */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--color-gray-light);
+      color: var(--color-blue-primary);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      margin: 0;
+      scroll-behavior: smooth;
+    }
+
+    /* Container */
+    .container {
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 4rem 1.5rem 4rem 1.5rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      z-index: 15;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+      color: var(--color-blue-primary);
+      letter-spacing: 0.02em;
+      position: relative;
+      display: inline-block;
+      cursor: default;
+
+      /* Animated gradient text underline */
+      background: linear-gradient(90deg, var(--color-red-accent), #ff4a4a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textGlow 3s ease-in-out infinite alternate;
+    }
+    @keyframes textGlow {
+      from {
+        filter: drop-shadow(0 0 4px var(--color-red-accent));
+      }
+      to {
+        filter: drop-shadow(0 0 10px #ff5555);
+      }
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      color: var(--color-blue-primary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+
+    p.description {
+      font-size: 1.1rem;
+      color: var(--color-gray-muted);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+
+    /* Section Titles */
+    .section-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.8rem;
+      display: inline-block;
+      color: var(--color-blue-primary);
+      cursor: default;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      user-select: none;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 56px;
+      height: 6px;
+      background: var(--color-red-accent);
+      border-radius: 12px;
+      transition: width 0.35s ease;
+      box-shadow: 0 0 12px var(--color-red-accent);
+    }
+    .section-title:hover::after {
+      width: 100%;
+    }
+
+    /* Card */
+    .card {
+      background-color: white;
+      border-radius: 18px;
+      padding: 2rem 2.5rem;
+      box-shadow:
+        0 10px 30px rgba(15, 28, 100, 0.1),
+        0 4px 12px rgba(15, 28, 100, 0.08);
+      border: 2px solid transparent;
+      transition:
+        box-shadow 0.35s ease,
+        border-color 0.35s ease,
+        transform 0.3s ease;
+      position: relative;
+      overflow: visible;
+      color: var(--color-blue-primary);
+      user-select: none;
+      cursor: default;
+    }
+    .card:hover, .card:focus-within {
+      box-shadow:
+        0 25px 50px rgba(185, 0, 30, 0.33),
+        0 14px 32px rgba(15, 28, 100, 0.15);
+      border-color: var(--color-red-accent);
+      transform: perspective(600px) rotateX(4deg) translateY(-6px);
+      outline: none;
+      z-index: 60;
+    }
+
+    /* Timeline vertical bar */
+    .timeline {
+      position: relative;
+      padding-left: 3rem;
+      margin: 0;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 28px;
+      width: 8px;
+      border-radius: 14px;
+      background: var(--color-blue-primary);
+      box-shadow: 0 0 16px rgba(15, 28, 100, 0.4);
+      animation: pulseGlow 3.5s ease-in-out infinite;
+      z-index: 5;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(185, 0, 30, 0.0); }
+      50% { box-shadow: 0 0 32px rgba(185, 0, 30, 0.3); }
+    }
+
+    /* Timeline item */
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3.25rem;
+      outline-offset: 6px;
+      outline-color: transparent;
+      outline-style: solid;
+      outline-width: 2px;
+      transition: outline-color 0.3s ease;
+    }
+    .timeline-item:focus-within {
+      outline-color: var(--color-red-accent);
+      border-radius: 18px;
+      z-index: 70;
+    }
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Timeline dot */
+    .timeline-point {
+      position: absolute;
+      left: 18px;
+      top: 1.15rem;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 5px solid var(--color-red-accent);
+      background: white;
+      box-shadow:
+        0 0 20px 3px rgba(185, 0, 30, 0.5),
+        inset 0 0 8px rgba(240, 246, 255, 0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: default;
+      z-index: 20;
+    }
+    .timeline-item:hover .timeline-point,
+    .timeline-item:focus-within .timeline-point {
+      animation: pulseDot 2.5s ease infinite;
+      transform: scale(1.4);
+      box-shadow:
+        0 0 28px 6px rgba(185, 0, 30, 0.75),
+        inset 0 0 10px rgba(240, 246, 255, 0.6);
+    }
+    @keyframes pulseDot {
+      0%, 100% { box-shadow:
+        0 0 28px 6px rgba(185, 0, 30, 0.75),
+        inset 0 0 10px rgba(240, 246, 255, 0.6);}
+      50% { box-shadow:
+        0 0 38px 10px rgba(185, 0, 30, 1),
+        inset 0 0 14px rgba(240, 246, 255, 0.9);}
+    }
+
+    /* Titles inside timeline cards */
+    .timeline-item h4 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--color-blue-primary);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      user-select: none;
+      letter-spacing: 0.01em;
+    }
+    .timeline-item h4 .material-icons {
+      color: var(--color-red-accent);
+      font-size: 26px;
+      user-select: none;
+      filter: drop-shadow(0 0 5px var(--color-red-accent));
+      transition: filter 0.3s ease;
+    }
+    .timeline-item:hover h4 .material-icons,
+    .timeline-item:focus-within h4 .material-icons {
+      filter: drop-shadow(0 0 12px var(--color-red-accent-hover));
+    }
+
+    /* Session subtitles */
+    .session-subtitle {
+      margin-top: 1.4rem;
+      font-weight: 600;
+      color: var(--color-blue-primary);
+      font-size: 1.15rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Paragraphs inside timeline */
+    .timeline-item p {
+      margin-top: 0.3rem;
+      color: var(--color-blue-primary);
+      opacity: 0.85;
+      line-height: 1.6;
+      font-weight: 400;
+      font-size: 1.02rem;
+      user-select: text;
+    }
+
+    /* Responsive typography adjustments */
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      h2 {
+        font-size: 1.5rem;
+      }
+      h4 {
+        font-size: 1.15rem;
+      }
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+      }
+    }
+
+    /* Subtle floating shapes background with lowered opacity and blur */
+    .floating-shape {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(88px);
+      opacity: 0.075;
+      z-index: 0;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      animation: slowFloat 12s ease-in-out infinite;
+    }
+    .shape1 {
+      width: 440px;
+      height: 440px;
+      background: linear-gradient(135deg, var(--color-red-accent), #ff6060);
+      top: 9vh;
+      left: -120px;
+      animation-delay: 0s;
+    }
+    .shape2 {
+      width: 320px;
+      height: 320px;
+      background: linear-gradient(135deg, #25467a, var(--color-blue-primary));
+      bottom: 15vh;
+      right: -140px;
+      animation-delay: 5s;
+    }
+    .shape3 {
+      width: 230px;
+      height: 230px;
+      background: linear-gradient(135deg, #a22631, var(--color-red-accent-hover));
+      top: 48vh;
+      right: 23vw;
+      animation-delay: 9s;
+    }
+    @keyframes slowFloat {
+      0%, 100% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-22px) translateX(20px); }
+    }
+  </style>
+</head>
+<body>
+  <div aria-hidden="true">
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+  </div>
+
+  <main class="container" role="main" aria-label="Agenda Conference Indonesia-Australia Prosperity Expo 2025">
+    <header>
+      <h1>Indonesia-Australia Prosperity Expo 2025</h1>
+      <h2>Conference Agenda</h2>
+      <p class="description">Halaman ini menampilkan rundown conference Indonesia-Australia Prosperity Expo 2025 yang membahas berbagai sektor kerja sama bilateral.</p>
+    </header>
+
+    <section aria-labelledby="info-umum" class="mb-12 card" tabindex="0">
+      <h3 id="info-umum" class="section-title">Informasi Umum</h3>
+      <p><strong>Tanggal:</strong> Rabu, 6 Agustus 2025</p>
+      <p><strong>Tempat:</strong> The Ritz-Carlton, Jakarta</p>
+    </section>
+
+    <section aria-labelledby="agenda" class="mb-12">
+      <h3 id="agenda" class="section-title">Agenda</h3>
+
+      <div class="timeline" role="list">
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Registrasi from 9:30 to 10:00">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">how_to_reg</span> 09:30 – 10:00: Registrasi</h4>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Opening Ceremony from 10:00 to 10:20">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">celebration</span> 10:00 – 10:20: Opening Ceremony</h4>
+          <p>Paul Bartlett (Director, Katalis)</p>
+          <p>HE Siswo Pramono (Indonesian Ambassador to Australia – TBC)</p>
+          <p>HE Rod Brazier (Australian Ambassador to Indonesia – TBC)</p>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Fireside Chats from 10:20 to 12:30">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">chat_bubble</span> 10:20 – 12:30: Fireside Chats</h4>
+
+          <div class="session-subtitle">Health &amp; Care Economy</div>
+          <p><strong>Moderator:</strong> Robert Herdiyanto</p>
+          <p><strong>Narasumber:</strong> Andrew Rochford, Ben Cass, Karlie Cummins, Kevin Evans</p>
+
+          <div class="session-subtitle">Education/Vocational Training</div>
+          <p><strong>Moderator:</strong> Clarice Campbell</p>
+          <p><strong>Narasumber:</strong> Ray Pulungan, Setia N Milatia Moemin / Chris Evans (TBC), Angela Girton / Mary Faraone (TBC)</p>
+
+          <div class="session-subtitle">Tech</div>
+          <p><strong>Moderator:</strong> Sondang Sirait</p>
+          <p><strong>Narasumber:</strong> Marshall Pribadi, Stuart Parry</p>
+
+          <div class="session-subtitle">Agriculture</div>
+          <p><strong>Moderator:</strong> Robert Budianto</p>
+          <p><strong>Narasumber:</strong> Tissa Aunilla, Richard Simonaitis, Franciscus Welirang</p>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Networking Lunch from 12:30 to 14:00">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">restaurant</span> 12:30 – 14:00: Networking Lunch (with Cultural Performance)</h4>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Presentation Indonesian Trade Attache from 14:00 to 14:10">
+          <span class="timeline-point" aria-hidden="true"></span>
+         <h4><span class="material-icons" aria-hidden="true">insights</span> 14:00 – 14:10: Presentation from Indonesian Trade Attache (Canberra)</h4>
+
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Talk Show IA-CEPA from 14:10 to 15:20">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">forum</span> 14:10 – 15:20: Talk Show: IA-CEPA &amp; Bilateral Trade Trends</h4>
+          <p><strong>Moderator:</strong> Moekti P. Soejachmoen</p>
+          <p><strong>Narasumber:</strong> Dyah Roro Esti Widya Putri (TBC), Gita Kamath (TBC), Arianto Patunru, Paul Bartlett</p>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Katalis Team Video from 15:20 to 15:25">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">videocam</span> 15:20 – 15:25: Katalis Team Video</h4>
+        </article>
+
+        <article class="timeline-item card" role="listitem" tabindex="0" aria-label="Closing from 15:25 to 15:30">
+          <span class="timeline-point" aria-hidden="true"></span>
+          <h4><span class="material-icons" aria-hidden="true">flag</span> 15:25 – 15:30: Closing</h4>
+        </article>
+
+      </div>
+    </section>
+  </main>
+</body>
+</html>
