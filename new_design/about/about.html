@@ -1,792 +1,1896 @@
-<style>
-        .prosperity-expo * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        .prosperity-expo {
-            font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-            background: white;
-            color: #333;
-            line-height: 1.7;
-            overflow-x: hidden;
-            width: 100vw;
-            position: relative;
-            left: 50%;
-            right: 50%;
-            margin-left: -50vw;
-            margin-right: -50vw;
-            font-weight: 300;
-        }
-
-        .prosperity-expo .hero-section {
-            background: linear-gradient(135deg, #0F1C64 0%, #2940a8 100%);
-            color: white;
-            padding: 120px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .prosperity-expo .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
-            background-size: 50px 50px;
-            animation: prosperity-grid-move 60s linear infinite;
-            z-index: 1;
-        }
-
-        @keyframes prosperity-grid-move {
-            0% { background-position: 0 0; }
-            100% { background-position: 50px 50px; }
-        }
-
-        .prosperity-expo .hero-content {
-            position: relative;
-            z-index: 2;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .prosperity-expo .hero-title {
-            font-size: 4.5rem;
-            font-weight: 300;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-            line-height: 1.2;
-            animation: prosperity-fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-            opacity: 0;
-        }
-
-        .prosperity-expo .hero-subtitle {
-            font-size: 1.5rem;
-            opacity: 0.8;
-            margin-bottom: 40px;
-            font-weight: 300;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: prosperity-fadeInUp 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.3s forwards;
-            opacity: 0;
-        }
-
-        .prosperity-expo .hero-date {
-            font-size: 1.2rem;
-            font-weight: 400;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 18px 40px;
-            display: inline-block;
-            position: relative;
-            overflow: hidden;
-            animation: prosperity-fadeIn 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.6s forwards;
-            opacity: 0;
-        }
-
-        .prosperity-expo .hero-date::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-        }
-
-        .prosperity-expo .hero-date::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            -webkit-backdrop-filter: blur(5px);
-            border-radius: 50px;
-            z-index: -1;
-        }
-
-        .prosperity-expo .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            width: 100%;
-        }
-
-        .prosperity-expo .section {
-            padding: 120px 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-            width: 100%;
-        }
-
-        .prosperity-expo .section.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .prosperity-expo .section-title {
-            font-size: 2.8rem;
-            color: #0F1C64;
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .prosperity-expo .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, rgba(15, 28, 100, 0), #0F1C64, rgba(15, 28, 100, 0));
-            border-radius: 1px;
-        }
-
-        .prosperity-expo .background-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-            margin-bottom: 80px;
-        }
-
-        .prosperity-expo .background-text {
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.9;
-        }
-
-        .prosperity-expo .background-text p {
-            margin-bottom: 25px;
-        }
-
-        .prosperity-expo .background-text strong {
-            font-weight: 400;
-            color: #0F1C64;
-        }
-
-        .prosperity-expo .background-image {
-            position: relative;
-            border-radius: 5px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(15, 28, 100, 0.1);
-            transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            transform-style: preserve-3d;
-        }
-
-        .prosperity-expo .background-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(15, 28, 100, 0.1), rgba(15, 28, 100, 0));
-            z-index: 1;
-        }
-
-        .prosperity-expo .background-image:hover {
-            transform: translateY(-10px) perspective(1000px) rotateX(5deg) rotateY(0deg) rotateZ(0deg) scale(1.02);
-        }
-
-        .prosperity-expo .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 80px 0;
-        }
-
-        .prosperity-expo .stat-card {
-            background: linear-gradient(135deg, #0F1C64, #2940a8);
-            color: white;
-            padding: 60px 30px;
-            border-radius: 5px;
-            text-align: center;
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            cursor: pointer;
-            opacity: 0;
-            transform: translateY(30px);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .prosperity-expo .stat-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
-            transform: rotate(30deg);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .prosperity-expo .stat-card:hover::before {
-            left: 100%;
-        }
-
-        .prosperity-expo .stat-card.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .prosperity-expo .stat-number {
-            font-size: 2.8rem;
-            font-weight: 300;
-            margin-bottom: 15px;
-            color: white;
-            position: relative;
-            display: inline-block;
-        }
-
-        .prosperity-expo .stat-number::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 2px;
-            background: rgba(255,255,255,0.5);
-        }
-
-        .prosperity-expo .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.8;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .prosperity-expo .benefits-section {
-            background: #f9fafd;
-            width: 100%;
-            position: relative;
-        }
-
-        .prosperity-expo .benefits-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(15,28,100,0.03)" stroke-width="1"/></svg>');
-            background-size: 50px 50px;
-            z-index: 0;
-        }
-
-        .prosperity-expo .benefits-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .prosperity-expo .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .prosperity-expo .benefit-card {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 5px;
-            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.08);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            border-left: 0;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .prosperity-expo .benefit-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(to bottom, #0F1C64, #2940a8);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .prosperity-expo .benefit-card:hover::before {
-            width: 8px;
-        }
-
-        .prosperity-expo .benefit-card.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .prosperity-expo .benefit-title {
-            color: #0F1C64;
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 25px;
-            letter-spacing: 0.5px;
-        }
-
-        .prosperity-expo .benefit-list {
-            list-style: none;
-        }
-
-        .prosperity-expo .benefit-list li {
-            margin: 15px 0;
-            padding-left: 30px;
-            position: relative;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .prosperity-expo .benefit-list li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 10px;
-            width: 12px;
-            height: 2px;
-            background: #0F1C64;
-        }
-
-        .prosperity-expo .objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .prosperity-expo .objective-card {
-            background: white;
-            padding: 50px 40px;
-            border-radius: 5px;
-            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.08);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .prosperity-expo .objective-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(to right, #0F1C64, #2940a8);
-            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .prosperity-expo .objective-card:hover::before {
-            height: 8px;
-        }
-
-        .prosperity-expo .objective-card.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .prosperity-expo .objective-letter {
-            color: #0F1C64;
-            font-size: 1.2rem;
-            font-weight: 400;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
-
-        .prosperity-expo .objective-title {
-            color: #0F1C64;
-            font-size: 1.3rem;
-            font-weight: 400;
-            margin-bottom: 20px;
-            letter-spacing: 0.5px;
-        }
-
-        .prosperity-expo .objective-text {
-            color: #555;
-            line-height: 1.9;
-        }
-
-        .prosperity-expo .highlight-section {
-            background: linear-gradient(135deg, #0F1C64 0%, #2940a8 100%);
-            color: white;
-            margin: 100px 0;
-            border-radius: 5px;
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        .prosperity-expo .highlight-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,50 L100,50 M50,0 L50,100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
-            background-size: 50px 50px;
-            z-index: 0;
-        }
-
-        .prosperity-expo .highlight-section.animated {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .prosperity-expo .highlight-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .prosperity-expo .highlight-title {
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .prosperity-expo .highlight-text {
-            font-size: 1.2rem;
-            line-height: 1.9;
-            opacity: 0.9;
-            font-weight: 300;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .prosperity-expo .intro-text {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #555;
-            margin-bottom: 60px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.9;
-            font-weight: 300;
-        }
-
-        @keyframes prosperity-fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes prosperity-fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        /* Full width untuk WordPress/Elementor */
-        @media screen and (min-width: 768px) {
-            .prosperity-expo {
-                margin-left: -50vw !important;
-                margin-right: -50vw !important;
-                left: 50% !important;
-                right: 50% !important;
-                width: 100vw !important;
-                max-width: none !important;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .prosperity-expo .hero-title {
-                font-size: 3.5rem;
-            }
-            
-            .prosperity-expo .section {
-                padding: 80px 0;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .prosperity-expo {
-                width: 100vw;
-                position: relative;
-                left: 50%;
-                right: 50%;
-                margin-left: -50vw;
-                margin-right: -50vw;
-            }
-            
-            .prosperity-expo .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .prosperity-expo .hero-subtitle {
-                font-size: 1.2rem;
-            }
-
-            .prosperity-expo .background-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .prosperity-expo .section {
-                padding: 60px 0;
-            }
-
-            .prosperity-expo .section-title {
-                font-size: 2.2rem;
-            }
-
-            .prosperity-expo .hero-section {
-                padding: 80px 0;
-                min-height: auto;
-            }
-
-            .prosperity-expo .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .prosperity-expo .benefits-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .prosperity-expo .objectives-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .prosperity-expo .container {
-                padding: 0 25px;
-            }
-
-            .prosperity-expo .highlight-section {
-                padding: 60px 30px;
-                margin: 60px 0;
-            }
-
-            .prosperity-expo .highlight-title {
-                font-size: 1.8rem;
-            }
-
-            .prosperity-expo .highlight-text {
-                font-size: 1.1rem;
-            }
-        }
-
-        /* Override Elementor container styles */
-        .elementor-widget-html .prosperity-expo {
-            width: 100vw !important;
-            position: relative !important;
-            left: 50% !important;
-            right: 50% !important;
-            margin-left: -50vw !important;
-            margin-right: -50vw !important;
-            max-width: none !important;
-        }
-</style>
-
-<div class="prosperity-expo">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indonesia-Australia Prosperity Expo 2025</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-blue: #1e3a8a;
+        --secondary-blue: #3b82f6;
+        --dark-blue: #1e40af;
+        --light-blue: #dbeafe;
+        --dark-gray: #374151;
+        --light-gray: #f3f4f6;
+        --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        --gradient-secondary: linear-gradient(135deg, #1e40af 0%, #60a5fa 100%);
+        --bg-gradient: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #1e40af 50%,
+          #3b82f6 100%
+        );
+        --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+        --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.25);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: white;
+        color: var(--dark-gray);
+        line-height: 1.6;
+        overflow-x: hidden;
+        font-weight: 400;
+      }
+
+      /* Floating Navigation */
+      .floating-nav {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+        display: flex;
+        gap: 10px;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: nav-slide-in 1s ease-out 2s forwards;
+      }
+
+      @keyframes nav-slide-in {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .nav-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        color: var(--primary-blue);
+        font-size: 20px;
+      }
+
+      .nav-btn:hover {
+        transform: scale(1.1) rotate(5deg);
+        background: var(--primary-blue);
+        color: white;
+        box-shadow: 0 8px 30px rgba(30, 58, 138, 0.3);
+      }
+
+      /* Enhanced Hero Badge */
+      .hero-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        color: rgba(255, 255, 255, 0.95);
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(15px);
+        position: relative;
+        overflow: hidden;
+        animation: badgeFloat 3s ease-in-out infinite;
+      }
+
+      .hero-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes badgeFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-5px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .hero-badge:hover {
+        transform: scale(1.05);
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-flags {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 40px;
+        perspective: 1000px;
+      }
+
+      .flags-display {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .flag {
+        width: 80px;
+        height: 50px;
+        border-radius: 8px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+        animation: flagFloat 4s ease-in-out infinite;
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+
+      .flag:hover {
+        transform: scale(1.2) rotateY(15deg) translateZ(20px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      @keyframes flagFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotateX(0deg);
+        }
+        25% {
+          transform: translateY(-5px) rotateX(5deg);
+        }
+        75% {
+          transform: translateY(5px) rotateX(-5deg);
+        }
+      }
+
+      .flag-connector {
+        width: 40px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--secondary-blue),
+          var(--light-blue),
+          var(--secondary-blue)
+        );
+        position: relative;
+        border-radius: 2px;
+        overflow: hidden;
+        animation: connector-pulse 2s ease-in-out infinite;
+      }
+
+      .flag-connector::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        animation: connector-shine 2s ease-in-out infinite;
+      }
+
+      @keyframes connector-pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      @keyframes connector-shine {
+        0% {
+          left: -100%;
+        }
+        100% {
+          left: 100%;
+        }
+      }
+
+      .flag-indonesia {
+        background: linear-gradient(180deg, #ff0000 50%, #ffffff 50%);
+        animation-delay: 0s;
+      }
+
+      .flag-australia {
+        background: #012169;
+        position: relative;
+        animation-delay: 0.5s;
+      }
+
+      .flag-australia::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 25px;
+        background: linear-gradient(
+            -45deg,
+            #012169 25%,
+            #ffffff 25% 50%,
+            #cf142b 50% 75%,
+            #ffffff 75%
+          ),
+          linear-gradient(
+            45deg,
+            #012169 25%,
+            #ffffff 25% 50%,
+            #cf142b 50% 75%,
+            #ffffff 75%
+          );
+        background-size: 4px 4px;
+      }
+
+      .flag-australia::after {
+        content: "★";
+        position: absolute;
+        right: 10px;
+        top: 8px;
+        color: white;
+        font-size: 0.8rem;
+        animation: star-twinkle 1.5s ease-in-out infinite;
+      }
+
+      @keyframes star-twinkle {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.7;
+          transform: scale(1.2);
+        }
+      }
+
+      /* Enhanced Hero Section */
+      .hero-section {
+        background: var(--bg-gradient);
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 40%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          );
+        animation: floating-orbs 20s ease-in-out infinite;
+      }
+
+      @keyframes floating-orbs {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      /* Enhanced Particles */
+      .hero-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: float-up 6s infinite linear;
+      }
+
+      @keyframes float-up {
+        0% {
+          opacity: 0;
+          transform: translateY(100vh) scale(0) rotate(0deg);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(90vh) scale(1) rotate(36deg);
+        }
+        90% {
+          opacity: 1;
+          transform: translateY(10vh) scale(1) rotate(324deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(0vh) scale(0) rotate(360deg);
+        }
+      }
+
+      /* Interactive Hero Title */
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #ffffff, #e0e7ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: slide-up 1.2s ease-out;
+        text-shadow: 0 0 50px rgba(255, 255, 255, 0.3);
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .hero-title:hover {
+        transform: scale(1.02);
+        filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+      }
+
+      .hero-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, white, transparent);
+        transition: width 0.5s ease;
+      }
+
+      .hero-title:hover::after {
+        width: 100%;
+      }
+
+      /* Enhanced CTA Buttons */
+      .hero-cta {
+        margin-top: 50px;
+        animation: slide-up 1.2s ease-out 0.9s both;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 36px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .cta-button:hover::before {
+        left: 100%;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+
+      .cta-button:active {
+        transform: translateY(-2px) scale(1.02);
+      }
+
+      /* Floating Action Button */
+      .floating-action {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        animation: float-bounce 3s ease-in-out infinite;
+        box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+      }
+
+      .floating-action:hover {
+        transform: scale(1.1) rotate(10deg);
+        box-shadow: 0 15px 40px rgba(30, 58, 138, 0.5);
+      }
+
+      @keyframes float-bounce {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      /* Enhanced Section Animations */
+      .section {
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(30, 58, 138, 0.02),
+          transparent
+        );
+        transition: left 1s ease;
+      }
+
+      .section:hover::before {
+        left: 100%;
+      }
+
+      /* Interactive Section Titles */
+      .section-title {
+        font-size: 3rem;
+        color: var(--primary-blue);
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 600;
+        position: relative;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .section-title:hover {
+        transform: scale(1.02);
+        color: var(--secondary-blue);
+      }
+
+      .section-title:hover::after {
+        width: 150px;
+        height: 6px;
+      }
+
+      /* Enhanced Card Animations */
+      .stat-card {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.08);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.08);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+        transition: all 0.3s ease;
+      }
+
+      .stat-card::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        background: radial-gradient(
+          circle,
+          rgba(30, 58, 138, 0.1) 0%,
+          transparent 70%
+        );
+        transition: all 0.5s ease;
+        border-radius: 50%;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-15px) rotateX(5deg);
+        box-shadow: 0 25px 70px rgba(30, 58, 138, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+
+      .stat-card:hover::before {
+        height: 8px;
+      }
+
+      .stat-card:hover::after {
+        width: 200px;
+        height: 200px;
+      }
+
+      /* Pulsing Animation for Stats */
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-blue);
+        animation: counter-up 2s ease-out;
+        letter-spacing: -0.02em;
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover .stat-number {
+        transform: scale(1.1);
+        text-shadow: 0 5px 15px rgba(30, 58, 138, 0.3);
+      }
+
+      /* Enhanced Benefit Cards */
+      .benefit-card {
+        background: white;
+        padding: 60px 50px;
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(30, 58, 138, 0.08);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.06);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 24px 24px 0 0;
+        transition: all 0.3s ease;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-10px) rotateY(2deg);
+        box-shadow: 0 30px 80px rgba(30, 58, 138, 0.2);
+        border-color: rgba(59, 130, 246, 0.15);
+      }
+
+      .benefit-card:hover::before {
+        height: 8px;
+        background: var(--gradient-secondary);
+      }
+
+      /* Interactive List Items */
+      .benefit-list li {
+        margin: 15px 0;
+        padding-left: 35px;
+        position: relative;
+        color: var(--dark-gray);
+        line-height: 1.6;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .benefit-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--secondary-blue);
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: var(--light-blue);
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+      }
+
+      .benefit-list li:hover {
+        transform: translateX(5px);
+        color: var(--primary-blue);
+      }
+
+      .benefit-list li:hover::before {
+        background: var(--secondary-blue);
+        color: white;
+        transform: scale(1.2) rotate(10deg);
+      }
+
+      /* Enhanced Objective Cards */
+      .objective-card {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.08);
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.06);
+        backdrop-filter: blur(10px);
+        cursor: pointer;
+        transform-style: preserve-3d;
+      }
+
+      .objective-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 24px 24px 0 0;
+        transition: all 0.3s ease;
+      }
+
+      .objective-card:hover {
+        transform: translateY(-12px) rotateX(5deg);
+        box-shadow: 0 25px 70px rgba(30, 58, 138, 0.2);
+        border-color: rgba(59, 130, 246, 0.15);
+      }
+
+      .objective-card:hover::before {
+        height: 8px;
+      }
+
+      .objective-letter {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      .objective-card:hover .objective-letter {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+      }
+
+      /* Enhanced Highlight Section */
+      .highlight-section {
+        background: var(--gradient-primary);
+        color: white;
+        margin: 100px 0;
+        border-radius: 32px;
+        padding: 100px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(30, 58, 138, 0.25);
+        transition: all 0.5s ease;
+        cursor: pointer;
+        animation: highlightFloat 8s ease-in-out infinite;
+      }
+
+      @keyframes highlightFloat {
+        0%,
+        100% {
+          transform: translateY(0px) scale(1);
+        }
+        50% {
+          transform: translateY(-10px) scale(1.01);
+        }
+      }
+
+      .highlight-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: highlight-rotate 20s linear infinite;
+        transition: opacity 0.3s ease;
+      }
+
+      .highlight-section:hover::before {
+        opacity: 0.7;
+      }
+
+      .highlight-section:hover {
+        transform: scale(1.02);
+        box-shadow: 0 30px 80px rgba(30, 58, 138, 0.4);
+      }
+
+      /* Grid Layouts */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin: 80px 0;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .objectives-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      /* Container and Layout */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .hero-date {
+        font-size: 1.6rem;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 20px 40px;
+        border-radius: 60px;
+        display: inline-block;
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        animation: slide-up 1.2s ease-out 0.6s both;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .hero-date:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.9;
+        margin-bottom: 40px;
+        animation: slide-up 1.2s ease-out 0.3s both;
+        font-weight: 300;
+        letter-spacing: 0.02em;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .hero-subtitle:hover {
+        transform: scale(1.02);
+        opacity: 1;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        color: var(--dark-gray);
+        margin-bottom: 60px;
+        opacity: 0.8;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .section-subtitle:hover {
+        opacity: 1;
+        transform: scale(1.01);
+      }
+
+      /* Background Content */
+      .background-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        margin-bottom: 80px;
+      }
+
+      .background-text {
+        font-size: 1.1rem;
+        color: var(--dark-gray);
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+      }
+
+      .background-text p {
+        margin-bottom: 25px;
+        opacity: 0;
+        animation: fade-in-up 0.8s ease-out forwards;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .background-text p:hover {
+        color: var(--primary-blue);
+        transform: translateX(5px);
+      }
+
+      .background-text p:nth-child(1) {
+        animation-delay: 0.2s;
+      }
+      .background-text p:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .background-text p:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      .background-visual {
+        position: relative;
+        height: 400px;
+        background: var(--gradient-primary);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: var(--shadow-strong);
+        transition: all 0.5s ease;
+        cursor: pointer;
+        animation: visualFloat 6s ease-in-out infinite;
+      }
+
+      @keyframes visualFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-15px) rotateY(5deg);
+        }
+      }
+
+      .connection-line {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 120px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.8) 20%,
+          rgba(255, 255, 255, 1) 50%,
+          rgba(255, 255, 255, 0.8) 80%,
+          transparent 100%
+        );
+        animation: connectionPulse 3s ease-in-out infinite;
+        z-index: -1;
+      }
+
+      @keyframes connectionPulse {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: translate(-50%, -50%) scaleX(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translate(-50%, -50%) scaleX(1.2);
+        }
+      }
+
+      .background-visual:hover {
+        transform: translateY(-10px) scale(1.02) rotateY(5deg);
+        box-shadow: 0 40px 100px rgba(30, 58, 138, 0.3);
+      }
+
+      .background-visual::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 30% 70%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 30%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
+        animation: visual-float 8s ease-in-out infinite;
+      }
+
+      @keyframes visual-float {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(5deg);
+        }
+      }
+
+      .background-visual-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+        z-index: 2;
+      }
+
+      .visual-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .visual-text {
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.4;
+      }
+
+      /* Enhanced Stats Grid */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin: 80px 0;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 24px;
+        text-align: center;
+        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.08);
+        backdrop-filter: blur(10px);
+        animation: cardFloat 4s ease-in-out infinite;
+      }
+
+      .stat-card:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      .stat-card:nth-child(3) {
+        animation-delay: 1s;
+      }
+
+      @keyframes cardFloat {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15);
+        border-color: rgba(59, 130, 246, 0.2);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: var(--primary-blue);
+        animation: counter-up 2s ease-out;
+        letter-spacing: -0.02em;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: var(--dark-gray);
+        font-weight: 500;
+      }
+
+      /* Benefits Section with Cards */
+      .benefits-section {
+        background: var(--light-gray);
+        position: relative;
+      }
+
+      .benefits-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(30, 58, 138, 0.03) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(59, 130, 246, 0.03) 0%,
+            transparent 50%
+          );
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .benefit-card {
+        background: white;
+        padding: 60px 50px;
+        border-radius: 24px;
+        box-shadow: 0 12px 40px rgba(30, 58, 138, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.06);
+        backdrop-filter: blur(10px);
+        animation: benefitFloat 5s ease-in-out infinite;
+      }
+
+      .benefit-card:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes benefitFloat {
+        0%,
+        100% {
+          transform: translateY(0px) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotateY(2deg);
+        }
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 24px 24px 0 0;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 64px rgba(30, 58, 138, 0.15);
+        border-color: rgba(59, 130, 246, 0.12);
+      }
+
+      .benefit-title {
+        color: var(--primary-blue);
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 2;
+        letter-spacing: -0.01em;
+      }
+
+      .benefit-list {
+        list-style: none;
+        position: relative;
+        z-index: 2;
+      }
+
+      .benefit-list li {
+        margin: 15px 0;
+        padding-left: 35px;
+        position: relative;
+        color: var(--dark-gray);
+        line-height: 1.6;
+      }
+
+      .benefit-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--secondary-blue);
+        font-weight: bold;
+        font-size: 1.2rem;
+        background: var(--light-blue);
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+      }
+
+      /* Highlight Section */
+      .highlight-section {
+        background: var(--gradient-primary);
+        color: white;
+        margin: 100px 0;
+        border-radius: 32px;
+        padding: 100px 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(30, 58, 138, 0.25);
+      }
+
+      .highlight-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: highlight-rotate 20s linear infinite;
+      }
+
+      @keyframes highlight-rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .highlight-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .highlight-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+      }
+
+      .highlight-text {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        opacity: 0.95;
+        max-width: 900px;
+        margin: 0 auto;
+        letter-spacing: 0.01em;
+        font-weight: 300;
+      }
+
+      /* Objectives Grid */
+      .objectives-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
+
+      .objective-card {
+        background: white;
+        padding: 50px 40px;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(30, 58, 138, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(30, 58, 138, 0.06);
+        backdrop-filter: blur(10px);
+      }
+
+      .objective-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-primary);
+        border-radius: 24px 24px 0 0;
+        transition: height 0.3s ease;
+      }
+
+      .objective-card:hover::before {
+        height: 6px;
+      }
+
+      .objective-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15);
+        border-color: rgba(59, 130, 246, 0.12);
+      }
+
+      .objective-letter {
+        color: var(--secondary-blue);
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .objective-title {
+        color: var(--primary-blue);
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 2;
+        letter-spacing: -0.01em;
+      }
+
+      .objective-text {
+        color: var(--dark-gray);
+        line-height: 1.7;
+        position: relative;
+        z-index: 2;
+        letter-spacing: 0.01em;
+      }
+
+      /* Animations */
+      @keyframes slide-up {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fade-in-up {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes counter-up {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .hero-date {
+          font-size: 1.3rem;
+          padding: 15px 30px;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .background-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .section {
+          padding: 80px 0;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .objectives-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 0 15px;
+        }
+
+        .highlight-section {
+          padding: 60px 30px;
+          margin: 60px 0;
+        }
+
+        .highlight-title {
+          font-size: 2rem;
+        }
+
+        .benefit-card,
+        .objective-card {
+          padding: 30px 25px;
+        }
+      }
+
+      /* Enhanced Scroll animations */
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      }
+
+      .animate-on-scroll.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .animate-on-scroll.fade-out {
+        opacity: 0.3;
+        transform: translateY(-20px);
+      }
+
+      /* Stagger animations */
+      .stagger-animation {
+        animation-delay: 0.1s;
+      }
+
+      .stagger-animation:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .stagger-animation:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .stagger-animation:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+    </style>
+  </head>
+  <body>
     <!-- Hero Section -->
     <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Indonesia-Australia<br>Prosperity Expo 2025</h1>
-            <p class="hero-subtitle">Strengthening Partnership • Driving Prosperity • Building Future</p>
-            <div class="hero-date">August 6, 2025 • Jakarta, Indonesia</div>
+      <div class="hero-particles" id="particles"></div>
+      <div class="hero-content">
+        <div class="hero-badge">About Prosperity Expo</div>
+        <div class="hero-flags">
+          <div class="flag flag-indonesia"></div>
+          <div class="flag-connector"></div>
+          <div class="flag flag-australia"></div>
         </div>
+
+        <h1 class="hero-title">
+          Indonesia-Australia<br />Prosperity Expo 2025
+        </h1>
+        <p class="hero-subtitle">
+          Strengthening Partnership • Driving Prosperity • Building Future
+        </p>
+        <div class="hero-date">August 6, 2025 • Jakarta, Indonesia</div>
+        <div class="hero-cta">
+          <a href="#register" class="cta-button">Register Now</a>
+          <a href="#background" class="cta-button">Explore the Vision</a>
+        </div>
+      </div>
     </section>
 
     <!-- Event Background Section -->
-    <section class="section" id="background-section">
-        <div class="container">
-            <h2 class="section-title">Event Background</h2>
-            <div class="background-content">
-                <div class="background-text">
-                    <p><strong>Indonesia-Australia Prosperity Expo 2025</strong> is a visionary initiative aimed at collaborating and strengthening the long-standing partnership between Indonesia and Australia. Rooted in shared history and shared aspirations, the Expo is designed to optimize synergies in cultural diversity, economic growth, and sustainable collaboration.</p>
-                    
-                    <p>The relationship between Indonesia and Australia has developed into a strategic partnership in various fields, including trade, education, and culture. The Expo builds on this foundation by integrating aspects of culture, tourism, trade, and investment to drive mutual growth.</p>
-                    
-                    <p>More than just an event, Prosperity Expo 2025 is a platform to celebrate the close ties between the two countries, showcase shared ambitions, and affirm commitments to a more prosperous future.</p>
-                </div>
-                <div class="background-image">
-                    <div style="width: 100%; height: 400px; background: linear-gradient(135deg, #0F1C64, #2940a8); border-radius: 5px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; font-weight: 300; letter-spacing: 1px;">
-                        Strategic Partnership<br>Indonesia - Australia
-                    </div>
-                </div>
-            </div>
+    <section class="section animate-on-scroll" id="background">
+      <div class="container">
+        <h2 class="section-title">Event Background</h2>
+        <p class="section-subtitle">
+          Building bridges between two nations through shared vision and
+          collaborative growth
+        </p>
 
-            <!-- Statistics -->
-            <div class="stats-grid">
-                <div class="stat-card" id="stat1">
-                    <div class="stat-number">US$ 15.39B</div>
-                    <div class="stat-label">Trade Value in 2024</div>
-                </div>
-                <div class="stat-card" id="stat2">
-                    <div class="stat-number">15.3%</div>
-                    <div class="stat-label">Growth in 4 Years</div>
-                </div>
-                <div class="stat-card" id="stat3">
-                    <div class="stat-number">IA-CEPA</div>
-                    <div class="stat-label">Economic Partnership</div>
-                </div>
+        <div class="background-content">
+          <div class="background-text">
+            <p>
+              <strong>Indonesia-Australia Prosperity Expo 2025</strong> is a
+              visionary initiative aimed at collaborating and strengthening the
+              long-standing partnership between Indonesia and Australia. Rooted
+              in shared history and shared aspirations, the Expo is designed to
+              optimize synergies in cultural diversity, economic growth, and
+              sustainable collaboration.
+            </p>
+
+            <p>
+              The relationship between Indonesia and Australia has developed
+              into a strategic partnership in various fields, including trade,
+              education, and culture. The Expo builds on this foundation by
+              integrating aspects of culture, tourism, trade, and investment to
+              drive mutual growth.
+            </p>
+
+            <p>
+              More than just an event, Prosperity Expo 2025 is a platform to
+              celebrate the close ties between the two countries, showcase
+              shared ambitions, and affirm commitments to a more prosperous
+              future.
+            </p>
+          </div>
+          <div class="background-visual">
+            <div class="background-visual-content">
+              <div
+                class="visual-icon flags-display scroll-reveal reveal-slide-right stagger-5"
+              >
+                <div class="flag flag-indonesia"></div>
+                <div class="connection-line"></div>
+                <div class="flag flag-australia"></div>
+              </div>
+              <div class="visual-text">
+                Strategic Partnership<br />Indonesia - Australia
+              </div>
             </div>
+          </div>
         </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-number">US$ 15.39B</div>
+            <div class="stat-label">Trade Value in 2024</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">15.3%</div>
+            <div class="stat-label">Growth in 4 Years</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">IA-CEPA</div>
+            <div class="stat-label">Economic Partnership</div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Benefits Section -->
-    <section class="section benefits-section" id="benefits-section">
-        <div class="benefits-content">
-            <div class="container">
-                <h2 class="section-title">Promoting Mutual Benefits of IA-CEPA</h2>
-                <p class="intro-text">
-                    The Indonesia-Australia Prosperity Expo 2025 will play a strategic role in addressing misconceptions about the Indonesia-Australia Comprehensive Economic Partnership Agreement (IA-CEPA), highlighting balanced opportunities and mutual benefits.
-                </p>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-card" id="benefit1">
-                        <div class="benefit-title">For Indonesia:</div>
-                        <ul class="benefit-list">
-                            <li>Expanding market access for automotive, textiles, food products, and fisheries</li>
-                            <li>Promoting investment opportunities in manufacturing, energy, and technology</li>
-                            <li>Fostering collaboration in education and skills development</li>
-                        </ul>
-                    </div>
-                    <div class="benefit-card" id="benefit2">
-                        <div class="benefit-title">For Australia:</div>
-                        <ul class="benefit-list">
-                            <li>Strengthening partnerships in agriculture, education, and services</li>
-                            <li>Creating shared value for Indonesian businesses</li>
-                            <li>Encouraging tourism growth as Indonesia remains a top destination</li>
-                        </ul>
-                    </div>
-                </div>
+    <section class="section benefits-section animate-on-scroll">
+      <div class="container">
+        <h2 class="section-title">Promoting Mutual Benefits of IA-CEPA</h2>
+        <p class="section-subtitle">
+          The Indonesia-Australia Prosperity Expo 2025 will play a strategic
+          role in addressing misconceptions about the Indonesia-Australia
+          Comprehensive Economic Partnership Agreement (IA-CEPA), highlighting
+          balanced opportunities and mutual benefits.
+        </p>
 
-                <div class="highlight-section" id="highlight-section">
-                    <div class="highlight-content">
-                        <h3 class="highlight-title">Bridging Trade Gaps and Promoting Mutual Growth</h3>
-                        <p class="highlight-text">
-                            The expo will serve as a platform to address trade imbalances by encouraging exports of Indonesian products to Australia, while also promoting foreign direct investment (FDI) and collaborative business ventures. By fostering dialogue, creating B2B connections, and showcasing Indonesia's cultural richness, tourism, and emerging industries, this event will contribute to achieving a balanced and sustainable economic partnership.
-                        </p>
-                    </div>
-                </div>
-            </div>
+        <div class="benefits-grid">
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-title">For Indonesia:</div>
+            <ul class="benefit-list">
+              <li>
+                Expanding market access for automotive, textiles, food products,
+                and fisheries
+              </li>
+              <li>
+                Promoting investment opportunities in manufacturing, energy, and
+                technology
+              </li>
+              <li>
+                Fostering collaboration in education and skills development
+              </li>
+            </ul>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-title">For Australia:</div>
+            <ul class="benefit-list">
+              <li>
+                Strengthening partnerships in agriculture, education, and
+                services
+              </li>
+              <li>Creating shared value for Indonesian businesses</li>
+              <li>
+                Encouraging tourism growth as Indonesia remains a top
+                destination
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <div class="highlight-section animate-on-scroll">
+          <div class="highlight-content">
+            <h3 class="highlight-title">
+              Bridging Trade Gaps and Promoting Mutual Growth
+            </h3>
+            <p class="highlight-text">
+              The expo will serve as a platform to address trade imbalances by
+              encouraging exports of Indonesian products to Australia, while
+              also promoting foreign direct investment (FDI) and collaborative
+              business ventures. By fostering dialogue, creating B2B
+              connections, and showcasing Indonesia's cultural richness,
+              tourism, and emerging industries, this event will contribute to
+              achieving a balanced and sustainable economic partnership.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- Objectives Section -->
-    <section class="section" id="objectives-section">
-        <div class="container">
-            <h2 class="section-title">Event Objectives</h2>
-            <p class="intro-text">
-                The "Indonesia-Australia Prosperity Expo 2025" is a strategic initiative designed to strengthen the ties between Indonesia and Australia through a celebration of cultural diversity and mutual economic growth.
-            </p>
-            
-            <div class="objectives-grid">
-                <div class="objective-card" id="objective1">
-                    <div class="objective-letter">a.</div>
-                    <div class="objective-title">Promoting Cultural Understanding</div>
-                    <div class="objective-text">Showcase the rich cultural heritage of Indonesia and its synergy with Australian values.</div>
-                </div>
-                <div class="objective-card" id="objective2">
-                    <div class="objective-letter">b.</div>
-                    <div class="objective-title">Expanding Economic Collaboration</div>
-                    <div class="objective-text">Highlight trade and investment opportunities to enhance economic relations.</div>
-                </div>
-                <div class="objective-card" id="objective3">
-                    <div class="objective-letter">c.</div>
-                    <div class="objective-title">Strengthening Tourism Initiatives</div>
-                    <div class="objective-text">Attract Australian tourists to explore Indonesia's diverse destinations.</div>
-                </div>
-                <div class="objective-card" id="objective4">
-                    <div class="objective-letter">d.</div>
-                    <div class="objective-title">Fostering Business Connections</div>
-                    <div class="objective-text">Provide a platform for business matching and networking between Indonesian and Australian enterprises.</div>
-                </div>
+    <section class="section animate-on-scroll">
+      <div class="container">
+        <h2 class="section-title">Event Objectives</h2>
+        <p class="section-subtitle">
+          The "Indonesia-Australia Prosperity Expo 2025" is a strategic
+          initiative designed to strengthen the ties between Indonesia and
+          Australia through a celebration of cultural diversity and mutual
+          economic growth.
+        </p>
+
+        <div class="objectives-grid">
+          <div class="objective-card animate-on-scroll">
+            <div class="objective-letter">🎨</div>
+            <div class="objective-title">Promoting Cultural Understanding</div>
+            <div class="objective-text">
+              Showcase the rich cultural heritage of Indonesia and its synergy
+              with Australian values.
             </div>
+          </div>
+          <div class="objective-card animate-on-scroll">
+            <div class="objective-letter">🤝</div>
+            <div class="objective-title">Expanding Economic Collaboration</div>
+            <div class="objective-text">
+              Highlight trade and investment opportunities to enhance economic
+              relations.
+            </div>
+          </div>
+          <div class="objective-card animate-on-scroll">
+            <div class="objective-letter">✈️</div>
+            <div class="objective-title">Strengthening Tourism Initiatives</div>
+            <div class="objective-text">
+              Attract Australian tourists to explore Indonesia's diverse
+              destinations.
+            </div>
+          </div>
+          <div class="objective-card animate-on-scroll">
+            <div class="objective-letter">💼</div>
+            <div class="objective-title">Fostering Business Connections</div>
+            <div class="objective-text">
+              Provide a platform for business matching and networking between
+              Indonesian and Australian enterprises.
+            </div>
+          </div>
         </div>
+      </div>
     </section>
-</div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Function to check if element is in viewport
-    function isInViewport(element) {
-        const rect = element.getBoundingClientRect();
-        return (
-            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.75 &&
-            rect.bottom >= 0
-        );
-    }
+    <script>
+      // Particle system for hero section
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 50;
 
-    // Function to handle scroll animations
-    function handleScrollAnimations() {
-        const sections = document.querySelectorAll('.section');
-        const statCards = document.querySelectorAll('.stat-card');
-        const benefitCards = document.querySelectorAll('.benefit-card');
-        const objectiveCards = document.querySelectorAll('.objective-card');
-        const highlightSection = document.querySelector('.highlight-section');
-
-        sections.forEach(section => {
-            if (isInViewport(section)) {
-                section.classList.add('animated');
-            }
-        });
-
-        statCards.forEach(card => {
-            if (isInViewport(card)) {
-                card.classList.add('animated');
-            }
-        });
-
-        benefitCards.forEach(card => {
-            if (isInViewport(card)) {
-                card.classList.add('animated');
-            }
-        });
-
-        objectiveCards.forEach(card => {
-            if (isInViewport(card)) {
-                card.classList.add('animated');
-            }
-        });
-
-        if (highlightSection && isInViewport(highlightSection)) {
-            highlightSection.classList.add('animated');
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 6 + "s";
+          particle.style.animationDuration = Math.random() * 3 + 3 + "s";
+          particlesContainer.appendChild(particle);
         }
-    }
+      }
 
-    // Initial check
-    handleScrollAnimations();
+      // Smooth scrolling for CTA button
+      document
+        .querySelector(".cta-button")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector("#background").scrollIntoView({
+            behavior: "smooth",
+          });
+        });
 
-    // Check on scroll
-    window.addEventListener('scroll', function() {
-        handleScrollAnimations();
-    });
-});
-</script>
+      // Scroll animations
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+        const windowHeight = window.innerHeight;
+
+        elements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < windowHeight - elementVisible) {
+            element.classList.add("animated");
+          }
+        });
+      }
+
+      // Initialize animations
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", function () {
+        createParticles();
+        animateOnScroll();
+      });
+
+      // Counter animation for stats
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+        counters.forEach((counter) => {
+          const target = counter.textContent;
+          if (target.includes("$") || target.includes("%")) {
+            // Handle currency and percentage
+            const numericValue = parseFloat(target.replace(/[^\d.]/g, ""));
+            animateValue(
+              counter,
+              0,
+              numericValue,
+              2000,
+              target.includes("$") ? "currency" : "percentage"
+            );
+          }
+        });
+      }
+
+      function animateValue(element, start, end, duration, type) {
+        const startTime = performance.now();
+        const animate = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const current = start + (end - start) * progress;
+
+          if (type === "currency") {
+            element.textContent = `US$ ${current.toFixed(2)}B`;
+          } else if (type === "percentage") {
+            element.textContent = `${current.toFixed(1)}%`;
+          }
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          }
+        };
+        requestAnimationFrame(animate);
+      }
+
+      // Intersection Observer for better performance
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated");
+
+            // Jalankan counter jika stat number muncul
+            if (entry.target.querySelector(".stat-number")) {
+              setTimeout(() => {
+                animateCounters();
+              }, 500);
+            }
+          } else {
+            entry.target.classList.remove("animated"); // <-- ini yang ditambah
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animation elements
+      document.addEventListener("DOMContentLoaded", function () {
+        const animateElements = document.querySelectorAll(".animate-on-scroll");
+        animateElements.forEach((el) => observer.observe(el));
+      });
+
+      // Parallax effect for hero section
+      window.addEventListener("scroll", function () {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll(
+          ".hero-section::before"
+        );
+        const rate = scrolled * -0.5;
+
+        parallaxElements.forEach((element) => {
+          element.style.transform = `translate3d(0, ${rate}px, 0)`;
+        });
+      });
+
+      // Add dynamic gradient animation
+      function createDynamicGradient() {
+        const hero = document.querySelector(".hero-section");
+        let hue = 220;
+
+        setInterval(() => {
+          hue = (hue + 1) % 360;
+          const gradient = `linear-gradient(135deg, 
+                    hsl(${hue}, 70%, 25%) 0%, 
+                    hsl(${hue + 20}, 70%, 35%) 50%, 
+                    hsl(${hue + 40}, 70%, 45%) 100%)`;
+          hero.style.background = gradient;
+        }, 100);
+      }
+
+      // Initialize all animations and effects
+      window.addEventListener("load", function () {
+        createParticles();
+        animateOnScroll();
+        // createDynamicGradient(); // Uncomment for dynamic gradient
+      });
+    </script>
+  </body>
+</html>
