@@ -306,7 +306,7 @@
 
       /* Enhanced Hero Section */
       .hero-section {
-        background: var(--bg-gradient);
+        background: linear-gradient(135deg, #0f1c64 0%, #1a2b7a 100%);
         color: white;
         padding: 120px 0;
         text-align: center;
@@ -316,6 +316,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
       }
 
       .hero-section::before {
@@ -325,21 +327,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(
-            circle at 20% 80%,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 40% 40%,
-            rgba(255, 255, 255, 0.05) 0%,
-            transparent 50%
-          );
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
         animation: floating-orbs 20s ease-in-out infinite;
       }
 
@@ -482,6 +470,8 @@
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         background: rgba(255, 255, 255, 0.2);
         border-color: rgba(255, 255, 255, 0.4);
+        color: white;
+        text-decoration: none;
       }
 
       .cta-button:active {
@@ -995,7 +985,7 @@
 
       .connection-line {
         position: absolute;
-        top: 50%;
+        top: 25%;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 120px;
@@ -1555,7 +1545,12 @@
         </p>
         <div class="hero-date">August 6, 2025 • Jakarta, Indonesia</div>
         <div class="hero-cta">
-          <a href="#register" class="cta-button">Register Now</a>
+          <a
+            href="https://tasteofindonesia.com.au/prosperity-expo"
+            target="_blank"
+            class="cta-button"
+            >Register Now</a
+          >
           <a href="#background" class="cta-button">Explore the Vision</a>
         </div>
       </div>
@@ -1758,14 +1753,16 @@
       }
 
       // Smooth scrolling for CTA button
-      document
-        .querySelector(".cta-button")
-        .addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector("#background").scrollIntoView({
-            behavior: "smooth",
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelector('a[href="#background"]')
+          .addEventListener("click", function (e) {
+            e.preventDefault();
+            document.querySelector("#background").scrollIntoView({
+              behavior: "smooth",
+            });
           });
-        });
+      });
 
       // Scroll animations
       function animateOnScroll() {
