@@ -297,7 +297,6 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M40 40L20 20h40v40L40 40zm0 0L20 60h40V20L40 40z'/%3E%3C/g%3E%3C/svg%3E");
         opacity: 0.6;
         z-index: 1;
         animation: pattern-move 20s linear infinite;
@@ -1794,14 +1793,84 @@
           opacity: 0;
         }
       }
+
+      /* Enhanced Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, #0f1c64 0%, #1a2b7a 100%);
+        color: white;
+        padding: 120px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: calc(-50vw + 50%);
+        margin-right: calc(-50vw + 50%);
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        animation: floating-orbs 20s ease-in-out infinite;
+      }
+
+      @keyframes floating-orbs {
+        0%,
+        100% {
+          transform: translateY(0px) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotate(180deg);
+        }
+      }
+
+      /* Enhanced Particles */
+      .hero-particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: float-up 6s infinite linear;
+      }
+
+      @keyframes float-up {
+        0% {
+          opacity: 0;
+          transform: translateY(100vh) scale(0) rotate(0deg);
+        }
+        10% {
+          opacity: 1;
+          transform: translateY(90vh) scale(1) rotate(36deg);
+        }
+        90% {
+          opacity: 1;
+          transform: translateY(10vh) scale(1) rotate(324deg);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(0vh) scale(0) rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Hero Section -->
-    <section class="hero">
-      <!-- 🔵 Rotating Grid Background -->
-      <div class="hero-grid-bg"></div>
-
+    <section class="hero hero-section">
       <!-- 🔵 Floating Orbs -->
       <div class="footer-floating-orbs">
         <div class="footer-orb"></div>
@@ -1838,9 +1907,9 @@
         <div class="footer-line"></div>
         <div class="footer-line"></div>
       </div>
-
       <!-- Existing hero-pattern and hero-content -->
       <div class="hero-pattern"></div>
+      <div class="hero-particles" id="particles"></div>
       <div class="hero-content">
         <div class="hero-icon">
           <div class="material-icons">event</div>
@@ -1852,7 +1921,11 @@
           across key sectors including health, education, and investment.
         </p>
         <div class="hero-buttons">
-          <a href="#register" class="btn-primary">Register Now</a>
+          <a
+            href="https://tasteofindonesia.com.au/prosperity-expo"
+            class="btn-primary"
+            >Register Now</a
+          >
           <a href="#agenda" class="btn-secondary">View Agenda</a>
         </div>
       </div>
