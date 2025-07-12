@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Matching - Prosperity Expo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            width: 100%;
+        }
+        .section {
+            padding: 100px 0;
+            position: relative;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+        /* Full width container for sections that need edge-to-edge design */
+        .full-width-container {
+            width: 100%;
+            padding: 0 20px;
+            margin: 0 auto;
+        }
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0F1C64 0%, #1a2b7a 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 30px;
+            color: #fff;
+            opacity: 0.9;
+        }
+        .hero-title {
+            font-size: 3.8rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #fff, #e8eeff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 850px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 18px 36px;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+      .cta-button:hover::before {
+        left: 100%;
+      }
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.4);
+      }
+      .cta-button:active {
+        transform: translateY(-2px) scale(1.02);
+      }
+        /* Section Titles */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        .section-icon {
+            font-size: 3rem;
+            color: #0F1C64;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #0F1C64;
+            line-height: 1.3;
+        }
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        /* Business Matching Types */
+        .matching-section {
+            background: #fff;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .matching-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(550px, 1fr));
+            gap: 50px;
+            margin-top: 60px;
+        }
+        .matching-card {
+            background: white;
+            border-radius: 25px;
+            padding: 50px 40px;
+            box-shadow: 0 25px 70px rgba(15, 28, 100, 0.12);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(15, 28, 100, 0.08);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        .matching-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+        }
+        .matching-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 35px 90px rgba(15, 28, 100, 0.18);
+        }
+        .matching-card .card-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 auto 30px;
+            box-shadow: 0 15px 30px rgba(15, 28, 100, 0.3);
+        }
+        .matching-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0F1C64;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        .matching-card p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        /* Why Exhibit Section */
+        .why-exhibit {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .benefit-item {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            border: 1px solid rgba(15, 28, 100, 0.05);
+        }
+        .benefit-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(15, 28, 100, 0.15);
+        }
+        .benefit-item .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 12px 25px rgba(15, 28, 100, 0.25);
+        }
+        .benefit-item h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0F1C64;
+            margin-bottom: 15px;
+        }
+        .benefit-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+        /* Sectors Section */
+        .sectors-section {
+            background: white;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        .sector-card {
+            background: linear-gradient(135deg, #0F1C64 0%, #1a2b7a 100%);
+            color: white;
+            padding: 45px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .sector-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.6s ease;
+        }
+        .sector-card:hover::before {
+            animation: shine 0.8s ease-in-out;
+        }
+        .sector-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+        .sector-card .sector-icon {
+            width: 85px;
+            height: 85px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin: 0 auto 25px;
+            backdrop-filter: blur(10px);
+        }
+        .sector-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            line-height: 1.4;
+        }
+        .sector-card p {
+            font-size: 1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        /* Target Section */
+        .target-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #e8eeff 100%);
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .target-visitors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 35px;
+            margin: 60px 0 80px;
+        }
+        .target-item {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(15, 28, 100, 0.1);
+            transition: all 0.4s ease;
+            border: 1px solid rgba(15, 28, 100, 0.05);
+        }
+        .target-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 60px rgba(15, 28, 100, 0.15);
+        }
+        .target-item .target-icon {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 auto 25px;
+            box-shadow: 0 12px 25px rgba(15, 28, 100, 0.25);
+        }
+        .target-item h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0F1C64;
+        }
+        .target-stat {
+            text-align: center;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(15, 28, 100, 0.12);
+            border: 1px solid rgba(15, 28, 100, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .target-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+        }
+        .target-number {
+            font-size: 5rem;
+            font-weight: 800;
+            color: #0F1C64;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        .target-label {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #666;
+            letter-spacing: 2px;
+        }
+        /* Exhibitor Section */
+        .exhibitor-section {
+            background: white;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .exhibitor-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-top: 60px;
+        }
+        .exhibitor-image {
+            position: relative;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(15, 28, 100, 0.15);
+        }
+        .exhibitor-image img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .exhibitor-image:hover img {
+            transform: scale(1.05);
+        }
+        .exhibitor-list {
+            list-style: none;
+            padding: 0;
+        }
+        .exhibitor-list li {
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.15rem;
+            position: relative;
+            padding-left: 40px;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+        .exhibitor-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, #0F1C64, #1a2b7a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .exhibitor-list li::after {
+            content: '✓';
+            position: absolute;
+            left: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .exhibitor-list li:hover {
+            color: #0F1C64;
+            padding-left: 50px;
+        }
+        .exhibitor-list li:last-child {
+            border-bottom: none;
+        }
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0F1C64 0%, #1a2b7a 100%);
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+        }
+        .cta-btn.primary {
+            background: linear-gradient(45deg, #ff4757, #ff6b7a);
+            color: white;
+            box-shadow: 0 15px 35px rgba(255, 71, 87, 0.3);
+        }
+        .cta-btn.secondary {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            color: white;
+            text-decoration: none;
+        }
+        .cta-btn.primary:hover {
+            box-shadow: 0 20px 50px rgba(255, 71, 87, 0.4);
+        }
+        .cta-btn.secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .exhibitor-section {
+            background: white;
+        }
+        .exhibitor-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .exhibitor-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(15, 28, 100, 0.15);
+        }
+        .exhibitor-image img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+        .exhibitor-list {
+            list-style: none;
+        }
+        .exhibitor-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 30px;
+        }
+        .exhibitor-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #0F1C64;
+            font-weight: bold;
+        }
+        .exhibitor-list li:last-child {
+            border-bottom: none;
+        }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @keyframes shine {
+            0% {
+                transform: translateX(-100%) translateY(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) translateY(100%) rotate(45deg);
+            }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2.2rem;
+            }
+            .matching-types {
+                grid-template-columns: 1fr;
+            }
+            .exhibitor-content {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+            .target-number {
+                font-size: 4rem;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            .section {
+                padding: 70px 0;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            .matching-card {
+                padding: 35px 25px;
+            }
+            .benefit-item {
+                padding: 35px 25px;
+            }
+            .sector-card {
+                padding: 35px 20px;
+            }
+            .container {
+                padding: 0 15px;
+            }
+        }
+        /* Override Elementor styles if needed */
+        .elementor-widget-html {
+            width: 100% !important;
+        }
+        .elementor-html {
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section>
+                <h1>HYBRID BUSINESS MATCHING SESSION</h1>
+                <p>Facilitating strategic connections between businesses and institutions from Indonesia and Australia, fostering mutual growth and market expansion through innovative hybrid format meetings.</p>
+                <a href="https://tasteofindonesia.com.au/prosperity-expo">
+                    Register Now
+                </a>
+    </section>
+    <!-- Business Matching Types -->
+    <section>
+                <h2>Business Matching Opportunities</h2>
+                <p>Connect with potential partners across two strategic pathways designed to enhance bilateral trade and investment opportunities</p>
+                    <h3>Australian Companies to Enter Indonesia</h3>
+                    <p>A comprehensive platform for Australian companies to connect with Indonesian businesses or government institutions, exploring lucrative opportunities in sectors such as food and beverages, sustainable manufacturing, digital economy, education, and healthcare.</p>
+                    <h3>Indonesian Companies to Access Australian Market</h3>
+                    <p>Supporting the <strong>UMKM BISA Ekspor</strong> program by the Indonesian Ministry of Trade, this session connects Indonesian exporters—especially MSMEs—with potential Australian buyers, importers, and Indonesian representatives in Australia to enhance export readiness and market access.</p>
+    </section>
+    <!-- Why Exhibit Section -->
+    <section>
+                <h2>Why Should You Exhibit?</h2>
+                <p>Discover the comprehensive benefits of participating in our business matching session and unlock new growth opportunities</p>
+                    <h3>Cultural Understanding</h3>
+                    <p>Promoting an understanding of Indonesian culture and synergy with Australian values for better business relationships</p>
+                    <h3>Economic Collaboration</h3>
+                    <p>Expanding economic collaboration by highlighting trade and investment opportunities between both nations</p>
+                    <h3>Tourism Growth</h3>
+                    <p>Strengthening tourism initiatives by attracting Australian tourists to explore Indonesia's diverse destinations</p>
+                    <h3>Bilateral Economy</h3>
+                    <p>Bilateral efforts to create a stronger economy between both countries through strategic partnerships</p>
+                    <h3>Multi-Sector Opportunities</h3>
+                    <p>Emphasizing multi-sector opportunities beyond trade, including investment, education, tourism, and technological innovation</p>
+                    <h3>Mutual Benefits</h3>
+                    <p>Highlighting balanced opportunities and ensuring mutual benefits for both nations in every collaboration</p>
+    </section>
+    <!-- Business Matching Sectors -->
+    <section>
+                <h2>Focus Sectors</h2>
+                <p>Four key sectors identified for enhanced economic collaboration between Indonesia and Australia</p>
+                    <h3>Health & Care Economy</h3>
+                    <p>Exploring partnerships in healthcare services, medical technology, elderly care, wellness, pharmaceutical products, and Aged Care solutions</p>
+                    <h3>Agriculture</h3>
+                    <p>Facilitating cooperation in modern farming, agritech solutions, and smart agriculture to boost productivity and sustainability</p>
+                    <h3>Digital Economy & Creative Industry</h3>
+                    <p>Encouraging joint initiatives in research and development, digital transformation, clean technologies, and applied innovation</p>
+                    <h3>Education & Vocational Training</h3>
+                    <p>Collaboration in higher education, vocational training, as well as technological and research innovation programs</p>
+    </section>
+    <!-- Target Visitors -->
+    <section>
+                <h2>Target Visitors</h2>
+                <p>Meet key decision makers, industry leaders, and influential stakeholders from both countries</p>
+                    <h3>Government Official</h3>
+                    <h3>Trader</h3>
+                    <h3>Business Leader</h3>
+                    <h3>Investors</h3>
+                    <h3>Students</h3>
+    </section>
+ <!-- Target Exhibitor -->
+    <section>
+            <h2 style="text-align:center;">Target Exhibitors</h2>
+            <p style="text-align:center;">Industries we're looking to connect</p>
+                    <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Meeting">
+                    <ul>
+                        <li>Banking & Financial Services</li>
+                        <li>Technology and Digital Solutions</li>
+                        <li>Tourism and Travel</li>
+                        <li>Education</li>
+                        <li>Creative Economy and SMEs (Handicrafts, Fashion, and Culinary Arts)</li>
+                        <li>Dynamic sectors such as Textiles, Processed Foods, and Handicrafts</li>
+                        <li>Agriculture and Food Processing (Agricultural Products, Herbal Health Products, and Processed Beef Products)</li>
+                    </ul>
+    </section>				
+					<style>
+body, html {
+  padding: 0;
+  margin: 0;
+}
+.custom-footer {
+  background: linear-gradient(to right, #0d1b5e, #091442);
+  color: #ffffff;
+  padding: 60px 5%;
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+.custom-footer-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 40px;
+}
+.footer-logo {
+  height: auto;
+  max-height: 60px;
+  width: auto;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+.footer-brand p {
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.8;
+}
+.footer-nav {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+.footer-column h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-column ul li {
+  margin-bottom: 10px;
+}
+.footer-column ul li a {
+  color: #ffffffcc;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+.footer-column ul li a:hover {
+  color: #e30613;
+}
+.social-icons i {
+  margin-right: 8px;
+}
+.custom-footer-bottom {
+  text-align: center;
+  padding-top: 30px;
+  font-size: 13px;
+  color: #ccc;
+}
+</style>
+<footer>
+     <img src="https://prosperity-expo.com/wp-content/uploads/2025/05/cropped-Logo-IAXP0-4-1.png" alt="Logo" /> 
+      <p>
+        Indonesia–Australia Prosperity Exhibition 2025<br />
+        6 August 2025 — The Ritz-Carlton Jakarta
+      </p>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="https://prosperity-expo.com/about/">About</a></li>
+          <li><a href="https://prosperity-expo.com/conference/">Conference</a></li>
+          <li><a href="https://prosperity-expo.com/exhibition/">Exhibition</a></li>
+          <li><a href="https://prosperity-expo.com/business-matching/">Business Matching</a></li>
+        </ul>
+    <p>&copy; 2025 Indonesia–Australia Prosperity Expo. All rights reserved.</p>
+</footer>
